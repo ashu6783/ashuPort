@@ -36,7 +36,7 @@ export default function Fotter(props: { githubUrl: string; hideSocialsInDesktop:
 
           <span className="text-xs flex flex-row items-center space-x-2 group-hover:text-AAsecondary">
             <GithubIcon className={"w-4 h-4 text-gray-400 fill-current group-hover:text-AAsecondary"} />
-            <span className="">Source code - Github</span>
+            <span className="">Hit Here for Github</span>
           </span>
         </div>
       </a>
