@@ -34,7 +34,7 @@ export default function ThisCantBeReached() {
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{ delay: 4, duration: 0.5 }}
-      className="absolute h-screen w-full bg-[#0a172b]
+      className="absolute h-screen w-full bg-gradient-to-r from-[#2a333c] to-[#23354b]
       py-16 sm:py-40 
       px-4 sm:px-24 md:px-36 lg:px-48 xl:px-96 
       flex flex-col space-y-5 sm:space-y-10
