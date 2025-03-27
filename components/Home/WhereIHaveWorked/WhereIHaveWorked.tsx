@@ -5,15 +5,19 @@ import AdvancedAgroManagement from "./Descriptions/LighningTech";
 
 export default function WhereIHaveWorked() {
   const barRef = React.useRef<HTMLDivElement>(null);
-  // ? INFORMATIONAL control the green position using px,
-  // ? INFORMATIONAL the default value of barRef's class should be at the beginning translate-y-[0px]
+  
   const GetDescription = () => {
     switch (DescriptionJob) {  
       case "LighningTech":
         return <AdvancedAgroManagement />;
+      default:
+        return null;
     }
   };
-  const [DescriptionJob, setDescriptionJob] = React.useState("Vision");
+
+  // Initialize the state with the default company
+  const [DescriptionJob, setDescriptionJob] = React.useState("LighningTech");
+
   return (
     <div data-aos="fade-up" className="flex flex-col items-center justify-center py-24 space-y-12 bg-AAprimary">
       {/* // ? Title "Where I've Worked" */}
@@ -34,7 +38,7 @@ export default function WhereIHaveWorked() {
       justify-center md:justify-center items-center md:items-start "
       >
         {/* // ? Left side of Where I've Worked, contains the bar and name of companies */}
-        <CompaniesBar setDescriptionJob={setDescriptionJob} />
+        <CompaniesBar setDescriptionJob={setDescriptionJob} initialJob="LighningTech" />
         {/* // ? Description for The job */}
         {GetDescription()}
       </section>
@@ -43,18 +47,22 @@ export default function WhereIHaveWorked() {
 }
 
 const CompaniesBar = props => {
-  const [barPosition, setBarPosition] = React.useState<Number>(-8); // Green bar position by the default it's -20px
+  const [barPosition, setBarPosition] = React.useState<Number>(150); // Set to initial position
   const [barAbovePosition, setBarAbovePosition] = React.useState<Number>(0);
+  
+  // Initialize with the first company selected
   const [companyNameBackgroundColorGreen, setCompanyNameBackgroundColorGreen] = React.useState<boolean[]>([
-    true,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
+    true, // First company selected by default
+    false, 
+    false, 
+    false, 
+    false, 
+    false, 
+    false, 
+    false, 
     false,
   ]);
+
   const CompanyButton = props => {
     return (
       <button
@@ -93,7 +101,6 @@ const CompaniesBar = props => {
         {/* // ? animated left bar */}
         <motion.div
           animate={{ y: barPosition }}
-          // ref={barRef}
           className={`absolute w-10 h-0.5 md:w-0.5 md:h-12 rounded bg-AAsecondary `}
         ></motion.div>
       </div>
@@ -103,10 +110,10 @@ const CompaniesBar = props => {
           <CompanyButton
             ButtonOrderOfcompanyNameBackgroundColorGreen={1}
             CompanyName="LighningTech"
-            BarPosition={0}
-            BarAvobePosition={0}
+            BarPosition={150}
+            BarAvobePosition={150}
             DescriptionJob="LighningTech"
-            CompanyNameBackgroundColorGreen={[true]}
+            CompanyNameBackgroundColorGreen={[true, false, false, false, false, false, false, false, false]}
             setDescriptionJob={props.setDescriptionJob}
           />
          
