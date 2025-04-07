@@ -247,6 +247,7 @@ export default function SomethingIveBuilt() {
                 <span className="pr-4 z-10">Ably</span>
                 <span className="pr-4 z-10">MongoDB</span>
                 <span className="pr-4 z-10">NextAuth</span>
+                <span className="pr-4 z-10">Nvidia-MIM</span>
                 <span className="pr-4 z-10">PubChem</span>
               </ul>
               <div className="z-10 flex fle-row space-x-5">
