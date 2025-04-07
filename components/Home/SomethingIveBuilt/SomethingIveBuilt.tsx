@@ -111,7 +111,7 @@ export default function SomethingIveBuilt() {
           </div>
         </div>
 
-        {/* // ?  Project 2 - Shop Bizz */}
+        {/* // ?  Project 2 - Zentrix */}
         <div data-aos="fade-up" className="relative md:grid md:grid-cols-12 w-full md:h-96">
           {/* Left image - Desktop View */}
           <div
@@ -273,7 +273,7 @@ export default function SomethingIveBuilt() {
            transition-opacity opacity-30 hover:opacity-0 hover:cursor-pointer duration-300"
                 ></div>
               </a>
-              <Img src={"/shopbizz.png"} alt={"Project Screen shot"} className={`w-full rounded h-full`} />
+              <Img src={"/eco.png"} alt={"Project Screen shot"} className={`w-full rounded h-full`} />
             </div>
           </div>
 
@@ -283,7 +283,7 @@ export default function SomethingIveBuilt() {
             <div className="md:hidden w-full mb-4">
               <a href="https://shopbizzz-frontend.onrender.com/" target={"_blank"} rel="noreferrer">
                 <Img
-                  src={"/shopbizz.png"}
+                  src={"/eco.png"}
                   alt={"Project Screen shot"}
                   className={`w-full rounded h-auto`}
                 />
@@ -298,7 +298,7 @@ export default function SomethingIveBuilt() {
                 <span className="text-AAsecondary text-base">Shop-Bizz</span>
                 <a href="https://shopbizzz-frontend.onrender.com/" target="_blank" rel="noopener noreferrer">
                   <span className="md:text-gray-200 text-AAsecondary font-bold text-xl hover:cursor-pointer">
-                    E-Commerce Application
+                    Sustainable eco friendly E-Commerce Application
                   </span>
                 </a>
               </div>
