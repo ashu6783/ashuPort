@@ -102,7 +102,7 @@ export default function SomethingIveBuilt() {
                 <span className="pr-4 z-10">Gemini API</span>
               </ul>
               <div className="z-10 flex fle-row space-x-5">
-              <GithubIcon link="https://github.com/ashu6783/medicalRx" />
+                <GithubIcon link="https://github.com/ashu6783/medicalRx" />
                 <a href="https://medical-rx.vercel.app" target={"_blank"} rel="noreferrer">
                   <ExternalLink url={""} router={router} />
                 </a>
@@ -224,7 +224,7 @@ export default function SomethingIveBuilt() {
                 <span className="text-AAsecondary text-base">MedSynth</span>
                 <a href="https://med-synth.vercel.app/" target="_blank" rel="noopener noreferrer">
                   <span className="md:text-gray-200 text-AAsecondary font-bold text-xl hover:cursor-pointer">
-                  Where Chemistry Meets Data-Driven Insight.
+                    Where Chemistry Meets Data-Driven Insight.
                   </span>
                 </a>
               </div>
@@ -251,7 +251,7 @@ export default function SomethingIveBuilt() {
                 <span className="pr-4 z-10">PubChem</span>
               </ul>
               <div className="z-10 flex fle-row space-x-5">
-              <GithubIcon link="https://github.com/ashu6783/medicalRx" />
+                <GithubIcon link="https://github.com/ashu6783/medicalRx" />
                 <a href="https://med-synth.vercel.app/" target={"_blank"} rel="noreferrer">
                   <ExternalLink url={""} router={router} />
                 </a>
@@ -305,16 +305,16 @@ export default function SomethingIveBuilt() {
               </div>
               <div className="w-full md:bg-AAtertiary rounded-md py-6 md:p-6 z-10">
                 <p className="text-gray-300 md:text-gray-400 text-left">
-                  ShopBizz is a modern e-commerce platform built using the <span className="text-AAsecondary">MERN stack</span>,
-                  designed to streamline <span className="text-AAsecondary">online shopping</span> for businesses and consumers.
-                  It features <span className="text-white">secure user authentication</span>, role-based access control,
-                  and an intuitive <span className="text-white">interface for managing products,
-                    orders, and payments</span>. Customers can browse products,
-                  add them to their cart, and complete purchases using
-                  integrated <span className="text-AAsecondary">payment gateways like <span className="font-bold">Stripe</span></span>.
-                  With a responsive design and efficient backend architecture,
-                  ShopBizz aims to provide a seamless shopping experience.
-                  <span className="text-AAsecondary">This project serves as a showcase of my skills in full-stack development, API integrations, and scalable application design.</span>
+                  ShopBizz is an innovative e-commerce platform developed with the <span className="text-AAsecondary">MERN stack</span>,
+                  crafted to enhance <span className="text-AAsecondary">digital shopping</span> for eco-conscious businesses and customers.
+                  It includes <span className="text-white">robust user authentication</span>, role-based permissions,
+                  and a user-friendly <span className="text-white">dashboard for overseeing products,
+                    orders, and transactions</span>. Shoppers can explore a variety of items,
+                  add them to their cart, and finalize purchases through seamless
+                  <span className="text-AAsecondary">payment solutions like <span className="font-bold">Stripe</span></span>.
+                  Featuring a responsive layout and a high-performance backend,
+                  ShopBizz delivers an effortless shopping journey.
+                  <span className="text-AAsecondary">This project demonstrates my expertise in full-stack development, API integration, and building scalable solutions.</span>
                 </p>
               </div>
               <ul
