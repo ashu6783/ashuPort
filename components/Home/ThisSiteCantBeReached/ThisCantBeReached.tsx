@@ -169,7 +169,7 @@ export default function ThisCantBeReached() {
           animate={{ y: CenterHeight + 50, opacity: 1 }}
           transition={{ delay: 6.5, duration: 0.3 }}
           className="absolute font-bold text-gray-600 text-2xl">
-          Namaste!
+          Bonjour!
         </motion.span>
         {/* Text start from here */}
 
@@ -180,50 +180,50 @@ export default function ThisCantBeReached() {
           className="w-full  flex flex-col space-y-8"
         >
           <span className="text-AAsecondary font-Header text-2xl">
-            This site{" "}
+           Hi! This page{" "}
             {ShowText ? (
               <motion.span
                 animate={{ scale: ["100%", "120%"] }}
                 transition={{ scale: { delay: 4, duration: 0.5 } }}
                 className="font-bold "
               >
-                <span className="font-bold text-white">actually can</span>
+                <span className="font-bold text-white">is loading</span>
               </motion.span>
             ) : (
-              <span className="text-white">can&apos;t</span>
+              <span className="text-white">isn&#39;t ready</span>
             )}{" "}
-            be reached
+            yet
           </span>
           <span className="text-AAsecondary text-md">
-            <span className="font-bold">www.ashuPort </span>
-            unexpectedly{" "}
+            <span className="font-bold">myPortfolio </span>
+            is currently{" "}
             {ShowText ? (
               <motion.span
                 animate={{ scale: ["100%", "140%"] }}
                 transition={{ scale: { delay: 4, duration: 1 } }}
                 className="font-bold"
               >
-                opened
+                preparing
               </motion.span>
             ) : (
-              <span>closed</span>
+              <span>initializing</span>
             )}{" "}
-            the connection.
+            your experience.
           </span>
           <div className="flex flex-col space-y-3">
-            <span className="font-Header text-AAsecondary text-lg">Try:</span>
+            <span className="font-Header text-AAsecondary text-lg">Please wait while:</span>
             <div className="flex flex-col space-y-2 pl-10">
               <span className="text-Header text-white font-Header sm:text-base text-sm">
-                <span className="text-bold text-gray-500">&bull;</span> Checking
-                the connection
+                <span className="text-bold text-gray-500">&bull;</span> Resources 
+                are loading
               </span>
               <span className="text-Header text-white font-Header sm:text-base text-sm">
-                <span className="text-bold text-gray-500">&bull;</span> Checking
-                the proxy and the firewall
+                <span className="text-bold text-gray-500">&bull;</span> Animations
+                are being prepared
               </span>
               <span className="text-Header text-white font-Header sm:text-bdase text-sm">
-                <span className="text-bold text-gray-500">&bull;</span> Running
-                Windows Network Diagnostics
+                <span className="text-bold text-gray-500">&bull;</span> Content
+                is being rendered
               </span>
             </div>
           </div>
@@ -234,10 +234,10 @@ export default function ThisCantBeReached() {
                 transition={{ scale: { delay: 4, duration: 0.5 } }}
                 className="font-bold text-amber-50"
               >
-                SUCC_CONNECTION_OPENED
+                LOADING_ALMOST_COMPLETE
               </motion.span>
             ) : (
-              <span>ERR_CONNECTION_CLOSED</span>
+              <span>LOADING_IN_PROGRESS</span>
             )}
           </span>
         </motion.div>
@@ -249,7 +249,7 @@ export default function ThisCantBeReached() {
         className=""
       >
         <button className="px-4 py-2 bg-blue-500 rounded text-white sm:text-base text-sm">
-          {ShowText ? "Start" : "Reload"}
+          {ShowText ? "Continue" : "Please wait"}
         </button>
       </motion.div>
     </motion.div>
