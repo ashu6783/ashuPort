@@ -64,7 +64,7 @@ export default function MyName(props: { finishedLoading: boolean }) {
         initial="initial"
         animate="animate"
         custom={1}
-        className="text-AAsecondary font-mono text-lg"
+        className="text-AAsecondary font-mono text-xl"
       >
         Hi, my name is
       </motion.span>
