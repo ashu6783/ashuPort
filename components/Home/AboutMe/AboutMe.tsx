@@ -1,120 +1,140 @@
 import React from "react";
 import Img from "../../../components/smallComp/image/Img";
-import ArrowIcon from "../../../components/Icons/ArrowIcon";
+import { ChevronRight, Briefcase, GraduationCap, MapPin, Code } from "lucide-react";
+
 export default function AboutMe(props) {
   const technologies = [
-    ["Nextjs/React", "TypeScript/JavaScript", "MongoDB", "Redux/Context API"],
-    ["Node.js", "Express.js","Mongodb", "Tailwind CSS"],
+    {
+      category: "Frontend",
+      techs: ["React/Next.js", "TypeScript/JavaScript", "Redux/Context API", "Tailwind CSS"]
+    },
+    {
+      category: "Backend",
+      techs: ["Node.js", "Express.js", "MongoDB", "RESTful APIs"]
+    },
+    {
+      category: "Tools",
+      techs: ["Git/GitHub", "VS Code", "Postman", "Figma"]
+    }
   ];
+
   return (
-    <div id="aboutSection" data-aos="fade-up" className="snap-start flex flex-col  items-center py-20 bg-AAprimary">
-      {/* // ? 0.1 About Me */}
-      <div
-        className="flex flex-col space-y-8 px-4 sm:px-0 w-full sm:w-[500px] 
-        md:w-[700px] lg:w-[900px] "
-      >
-        <div className="flex flex-row items-center ">
-          <div className="flex flex-row  items-center mr-4">
-            <ArrowIcon className={"flex-none h-4 md:h-6 w-4 md:w-5 translate-y-[0.5px] text-AAsecondary"} />
-            <span className="text-AAsecondary font-Header text-sm  sm:text-xl"> 01.</span>
-            <span className="flex-none text-gray-200 opacity-85 font-bold tracking-wider text-lg sm:text-2xl pl-4">
+    <div 
+      id="aboutSection" 
+      data-aos="fade-up" 
+      className="snap-start flex flex-col items-center py-20 bg-AAprimary relative overflow-hidden"
+    >
+      {/* Background accents */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-AAsecondary opacity-5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-AAsecondary opacity-5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+      
+      <div className="flex flex-col space-y-12 px-4 sm:px-0 w-full sm:w-[500px] md:w-[700px] lg:w-[900px] xl:w-[1000px] z-10">
+        {/* Section Header */}
+        <div className="flex flex-row items-center">
+          <div className="flex flex-row items-center mr-4">
+            <span className="text-AAsecondary font-mono text-lg sm:text-xl"> 01.</span>
+            <h2 className="text-gray-200 font-bold tracking-wider text-xl sm:text-3xl pl-2">
               About Me
-            </span>
+            </h2>
           </div>
-          <div className="bg-gray-400 h-[0.2px] w-full sm:w-72 ml-4"></div>
+          <div className="bg-gray-500 h-[0.2px] w-full sm:w-96 ml-4 opacity-30"></div>
         </div>
-        {/* // ? Paragraphs */}
-
-        <div className="w-full flex flex-col md:flex-row space-y-8 md:space-y-0  md:space-x-8 sm:space-x-2 ">
-          <div className="w-full md:w-7/12 space-y-4 sm:text-base text-sm ">
-            <div className="font-Header text-justify">
-              <span className="text-gray-400 ">
-                Hola! Myself Ashutosh Gaurav, and I&apos;m a passionate{" "}
-                <span className="text-AAsecondary text-bold">Full Stack Software Developer</span> with strong problem-solving skills.
-                I am currently a pre-final year (6th semester) student at the{" "}
-                <span className="text-AAsecondary">Indian Institute of Information Technology Ranchi (IIIT R)</span>,
-                pursuing a degree in Electronics and Communication Engineering (ECE).
-                I hail from <span className="text-AAsecondary">Lakhimpur Kheri, Uttar Pradesh, India</span>, and my dedication
-                to software development has driven me to explore full-stack engineering extensively.
-              </span>
-
-            </div>
-            <div className="font-Header text-justify">
-              <span className="text-gray-400 ">
-                I also gained valuable industry experience during my internship at{" "}
-                <span className="text-AAsecondary">Lightning Technologies</span> as a
-                <span className="text-AAsecondary"> Full Stack Developer Intern</span>. There, I worked extensively on
-                data visualization, handling real-time data streams, and integrating dashboards to present meaningful
-                insights. This experience not only strengthened my technical expertise in front-end and back-end
-                development but also deepened my understanding of real-world application performance and scalability.
-                <br/>
+        
+        {/* Content Container */}
+        <div className="w-full flex flex-col lg:flex-row gap-12">
+          {/* Left Column - Text Content */}
+          <div className="w-full lg:w-3/5 space-y-6">
+            {/* Bio Paragraphs */}
+            <div className="space-y-4 text-base leading-relaxed">
+              <div className="font-medium text-gray-300">
+                Hola! Myself <span className="text-white font-semibold">Ashutosh Gaurav</span>, and I am a passionate{" "}
+                <span className="text-AAsecondary font-semibold">Full Stack Software Developer</span> with strong problem-solving skills.
+              </div>
+              
+              <div className="flex items-start space-x-2 text-gray-400">
+                <GraduationCap className="flex-shrink-0 w-5 h-5 text-AAsecondary mt-1" />
+                <p>
+                  Pre-final year (6th semester) student at the{" "}
+                  <span className="text-AAsecondary font-medium">Indian Institute of Information Technology Ranchi (IIIT R)</span>,
+                  pursuing a degree in Electronics and Communication Engineering (ECE).
+                </p>
+              </div>
+              
+              <div className="flex items-start space-x-2 text-gray-400">
+                <MapPin className="flex-shrink-0 w-5 h-5 text-AAsecondary mt-1" />
+                <p>
+                  I hail from <span className="text-AAsecondary font-medium">Lakhimpur Kheri, Uttar Pradesh, India</span>, and my dedication
+                  to software development has driven me to explore full-stack engineering extensively.
+                </p>
+              </div>
+              
+              <div className="flex items-start space-x-2 text-gray-400">
+                <Briefcase className="flex-shrink-0 w-5 h-5 text-AAsecondary mt-1" />
+                <p>
+                  I gained valuable industry experience during my internship at{" "}
+                  <span className="text-AAsecondary font-medium">Lightning Technologies</span> as a
+                  <span className="text-AAsecondary font-medium"> SDE Intern</span>. There, I worked extensively on
+                  data visualization, handling real-time data streams, and integrating dashboards to present meaningful
+                  insights.
+                </p>
+              </div>
+              
+              <p className="text-gray-400">
                 My journey in software engineering has been driven by a strong passion for problem-solving, innovation,
-                and continuous learning.
-              </span>
-
+                and continuous learning. I am always interested to keep learning and improve my skills to make a positive impact in the tech world.
+              </p>
             </div>
-
-            <div className="font-Header tracking-wide text-justify ">
-              <span className="text-gray-400  ">
-                I&apos;m always interested to keep learning and improve my skills to make a positive impact in the tech
-                world. Here are some of the technologies I&apos;ve been working with :{" "}
-              </span>
-            </div>
-            <div className="font-Header tracking-wide flex flex-row space-x-16  justify-center lg:justify-start">
-              <div className="flex flex-row space-x-2 items-center">
-                <div className="flex flex-col space-y-4 sm:text-base text-sm">
-                  {technologies[0].map((tech, index) => {
-                    return (
-                      <div key={index} className="flex flex-row items-center space-x-2">
-                        <ArrowIcon className={"h-3 w-3 text-AAsecondary"} />
-                        <span className="text-gray-400 sm:text-sm text-xs">{tech}</span>
-                      </div>
-                    );
-                  })}
-                </div>
+            
+            {/* Technologies Section */}
+            <div className="pt-4">
+              <div className="flex items-center mb-4 space-x-2">
+                <Code className="w-5 h-5 text-AAsecondary" />
+                <h3 className="text-lg font-semibold text-gray-300">Technologies I have been working with:</h3>
               </div>
-              <div className="flex flex-row space-x-2 items-center">
-                <div className="flex flex-col space-y-4 sm:text-base text-sm">
-                  {technologies[1].map((tech, index) => {
-                    return (
-                      <div key={index} className="flex flex-row items-center space-x-2">
-                        <ArrowIcon className={"h-3 w-3 text-AAsecondary"} />
-                        <span className="text-gray-400 sm:text-sm text-xs">{tech}</span>
-                      </div>
-                    );
-                  })}
-                </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {technologies.map((techGroup, groupIndex) => (
+                  <div key={groupIndex} className="space-y-3">
+                    <h4 className="text-sm font-semibold text-white/90 uppercase tracking-wider">{techGroup.category}</h4>
+                    <div className="space-y-2">
+                      {techGroup.techs.map((tech, techIndex) => (
+                        <div key={techIndex} className="flex items-center space-x-2">
+                          <ChevronRight className="h-3.5 w-3.5 text-AAsecondary" />
+                          <span className="text-gray-400 text-sm">{tech}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-          {/* // ? Image in Desktop and Tablet */}
-          <div className="group relative lg:w-96 lg:h-96 md:w-72 md:h-72 md:block hidden ">
-            <div
-              className="group-hover:translate-x-3 group-hover:translate-y-3
-               duration-300 absolute w-5/6 h-5/6 border-2 border-AAsecondary translate-x-5 
-               translate-y-5 rounded"
-            ></div>
-
-            <div className="absolute w-5/6 h-5/6  rounded overflow-hidden">
-              <div className="absolute w-full h-full group-hover:opacity-0 bg-AAsecondary opacity-10 duration-300 rounded overflow-hidden"></div>
-              <Img
-                src={"/ashutosh.jpg"}
-                className={"object-contain rounded-lg"}
-                alt="My Image Not Found"
-              />
+          
+          {/* Right Column - Image */}
+          <div className="w-full lg:w-2/5 flex justify-center items-center">
+            <div className="relative max-w-xs">
+              {/* Border frame */}
+              <div 
+                className="absolute w-full h-full border-2 border-AAsecondary rounded-md translate-x-4 translate-y-4 
+                transition-transform duration-300 group-hover:translate-x-6 group-hover:translate-y-6"
+              ></div>
+              
+              {/* Image container */}
+              <div className="relative group rounded-md overflow-hidden border border-gray-700">
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-AAsecondary/20 group-hover:bg-transparent transition-all duration-300 z-10"></div>
+                
+                {/* Image */}
+                <Img
+                  src={"/ashutosh.jpg"}
+                  className="w-full h-full object-cover rounded-md grayscale-[30%] group-hover:grayscale-0 transition-all duration-300"
+                  alt="Ashutosh Gaurav"
+                />
+                
+                {/* Hover effects */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-AAsecondary/40 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
+              </div>
             </div>
-          </div>
-          {/* // ?Image in Mobile */}
-          <div className=" relative w-full h-48 md:hidden  flex justify-center items-center">
-            <div className="absolute w-48 h-full  rounded  translate-x-5 translate-y-5 border-2 border-AAsecondary"></div>
-            <div className="absolute w-48 h-full rounded overflow-hidden">
-              <Img
-                src={"/ashutosh.jpg"}
-                className={"object-contain rounded-lg"}
-                alt="My Image Not Found"
-              />
-            </div>
-            <div className="absolute w-48 h-full  bg-AAsecondary opacity-10 md:opacity-60  rounded overflow-hidden"></div>
           </div>
         </div>
       </div>

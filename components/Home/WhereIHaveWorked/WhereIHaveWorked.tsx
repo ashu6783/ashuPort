@@ -1,30 +1,31 @@
 import React from "react";
 import { motion } from "../../../node_modules/framer-motion/dist/framer-motion";
 import ArrowIcon from "../../Icons/ArrowIcon";
-import AdvancedAgroManagement from "./Descriptions/LighningTech";
+import LightningTech from "./Descriptions/LighningTech";
 
 export default function WhereIHaveWorked() {
-  const barRef = React.useRef<HTMLDivElement>(null);
+  // Initialize the state with the default company
+  const [selectedJob, setSelectedJob] = React.useState("LightningTech");
   
-  const GetDescription = () => {
-    switch (DescriptionJob) {  
-      case "LighningTech":
-        return <AdvancedAgroManagement />;
+  const renderJobDescription = () => {
+    switch (selectedJob) {  
+      case "LightningTech":
+        return <LightningTech />;
       default:
         return null;
     }
   };
 
-  // Initialize the state with the default company
-  const [DescriptionJob, setDescriptionJob] = React.useState("LighningTech");
-
   return (
-    <div data-aos="fade-up" className="flex flex-col items-center justify-center py-24 space-y-12 bg-AAprimary">
-      {/* // ? Title "Where I've Worked" */}
+    <div 
+      data-aos="fade-up" 
+      className="flex flex-col items-center justify-center py-24 space-y-12 bg-AAprimary"
+    >
+      {/* Section Title */}
       <section className="flex flex-row items-center">
         <div className="flex flex-row items-center">
-          <ArrowIcon className={"flex-none h-4 md:h-6 w-4 md:w-5 text-AAsecondary"} />
-          <span className="text-AAsecondary font-sans text-sm  sm:text-xl"> 02.</span>
+          <ArrowIcon className="flex-none h-4 md:h-6 w-4 md:w-5 text-AAsecondary" />
+          <span className="text-AAsecondary font-sans text-sm sm:text-xl"> 02.</span>
         </div>
 
         <span className="text-gray-200 opacity-85 font-bold tracking-wider text-lg md:text-2xl px-3">
@@ -32,95 +33,82 @@ export default function WhereIHaveWorked() {
         </span>
         <div className="bg-gray-400 h-[0.2px] w-16 sm:w-44 md:w-80"></div>
       </section>
-      {/* // ? Where I've Worked Content section */}
-      <section
-        className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0
-      justify-center md:justify-center items-center md:items-start "
-      >
-        {/* // ? Left side of Where I've Worked, contains the bar and name of companies */}
-        <CompaniesBar setDescriptionJob={setDescriptionJob} initialJob="LighningTech" />
-        {/* // ? Description for The job */}
-        {GetDescription()}
+      
+      {/* Content section */}
+      <section className="flex flex-col md:flex-row md:space-x-8 space-y-6 md:space-y-0
+        justify-center items-center md:items-start w-full max-w-5xl px-4 md:px-0">
+        {/* Company selector */}
+        <CompaniesBar 
+          selectedJob={selectedJob}
+          setSelectedJob={setSelectedJob} 
+        />
+        
+        {/* Job description */}
+        <div className="md:flex-grow w-full md:max-w-xl">
+          {renderJobDescription()}
+        </div>
       </section>
     </div>
   );
 }
 
-const CompaniesBar = props => {
-  const [barPosition, setBarPosition] = React.useState<Number>(150); // Set to initial position
-  const [barAbovePosition, setBarAbovePosition] = React.useState<Number>(0);
-  
-  // Initialize with the first company selected
-  const [companyNameBackgroundColorGreen, setCompanyNameBackgroundColorGreen] = React.useState<boolean[]>([
-    true, // First company selected by default
-    false, 
-    false, 
-    false, 
-    false, 
-    false, 
-    false, 
-    false, 
-    false,
-  ]);
+const CompaniesBar = ({ selectedJob, setSelectedJob }) => {
+  // Companies data
+  const companies = [
+    {
+      id: "LightningTech",
+      name: "Lightning Tech",
+      period: "Jan 2025 - Mar 2025"
+    },
+    // Add more companies here when needed
+  ];
 
-  const CompanyButton = props => {
-    return (
-      <button
-        onClick={() => {
-          setBarPosition(props.BarPosition);
-          setBarAbovePosition(props.BarAvobePosition);
-          props.setDescriptionJob(props.DescriptionJob);
-          setCompanyNameBackgroundColorGreen(props.CompanyNameBackgroundColorGreen);
-        }}
-        className={`flex-none sm:text-sm text-xs text-center md:text-left  hover:text-AAsecondary
-             hover:bg-ResumeButtonHover rounded  font-mono  
-             py-3 md:pl-6 md:px-4 md:w-44 w-32 duration-500
-             ${
-               companyNameBackgroundColorGreen[props.ButtonOrderOfcompanyNameBackgroundColorGreen]
-                 ? "bg-ResumeButtonHover text-AAsecondary"
-                 : "text-gray-500"
-             }`}
-      >
-        {props.CompanyName}
-      </button>
-    );
+  // Calculate indicator position based on selected job
+  const getIndicatorPosition = () => {
+    const index = companies.findIndex(company => company.id === selectedJob);
+    return index >= 0 ? index * 44 : 0; // 44px is the height of each button
   };
 
   return (
-    <div
-      id="WhereIhaveWorkedSection"
-      className=" flex flex-col md:flex-row  w-screen lg:w-auto 
-      overflow-auto scrollbar-hide md:overflow-hidden pb-4 md:pb-0 justify-start
-       sm:justify-center items-start sm:items-center"
-    >
-      {/* // ? left bar Holder */}
-      <div
-        className=" hidden md:block bg-gray-500 relative h-0.5 w-34 md:h-[352px] translate-y-1 md:w-0.5  
-        rounded md:order-1 order-2  "
-      >
-        {/* // ? animated left bar */}
-        <motion.div
-          animate={{ y: barPosition }}
-          className={`absolute w-10 h-0.5 md:w-0.5 md:h-12 rounded bg-AAsecondary `}
-        ></motion.div>
+    <div className="flex flex-col w-full md:w-64 bg-gray-900/20 rounded-lg overflow-hidden">
+      {/* Company buttons */}
+      <div className="relative flex flex-col">
+        {/* Animated indicator */}
+        <div className="hidden md:block absolute left-0 w-1 bg-gray-700 h-full">
+          <motion.div
+            animate={{ y: getIndicatorPosition() }}
+            className="absolute w-1 h-11 bg-AAsecondary"
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          ></motion.div>
+        </div>
+        
+        {/* Company buttons */}
+        {companies.map((company) => (
+          <button
+            key={company.id}
+            onClick={() => setSelectedJob(company.id)}
+            className={`flex flex-col items-start py-3 px-4 border-l-2 transition-all duration-300 ${
+              selectedJob === company.id 
+                ? "border-AAsecondary text-AAsecondary bg-ResumeButtonHover" 
+                : "border-transparent text-gray-500 hover:text-AAsecondary hover:bg-ResumeButtonHover/50"
+            }`}
+          >
+            <span className="font-mono text-sm md:text-base">{company.name}</span>
+            <span className="font-mono text-xs opacity-70">{company.period}</span>
+          </button>
+        ))}
       </div>
-      {/* // ? Companies name as buttons */}
-      <div className="flex flex-col md:order-2 order-1 space-y-1 pl-8 md:pl-0 ">
-        <div className="flex flex-row md:flex-col">
-          <CompanyButton
-            ButtonOrderOfcompanyNameBackgroundColorGreen={1}
-            CompanyName="LighningTech"
-            BarPosition={150}
-            BarAvobePosition={150}
-            DescriptionJob="LighningTech"
-            CompanyNameBackgroundColorGreen={[true, false, false, false, false, false, false, false, false]}
-            setDescriptionJob={props.setDescriptionJob}
-          />
-         
-        </div>
-        <div className="block md:hidden h-0.5 rounded bg-gray-500">
-          <motion.div animate={{ x: barAbovePosition }} className="w-[128px] h-0.5 rounded bg-AAsecondary"></motion.div>
-        </div>
+      
+      {/* Mobile indicator (horizontal) */}
+      <div className="md:hidden h-0.5 w-full bg-gray-700 mt-1">
+        <motion.div 
+          animate={{ 
+            x: selectedJob === "LightningTech" ? 0 : "100%" 
+          }}
+          className="h-full w-full bg-AAsecondary"
+          style={{ width: `${100 / companies.length}%` }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        ></motion.div>
       </div>
     </div>
   );
