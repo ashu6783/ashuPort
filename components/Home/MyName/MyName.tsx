@@ -14,7 +14,7 @@ export default function MyName(props: { finishedLoading: boolean }) {
     // Only initialize Typed.js after loading is finished
     if (props.finishedLoading && nameRef.current) {
       const typedName = new Typed(nameRef.current, {
-        strings: ['Ashutosh Gaurav.'],
+        strings: ['Ashutosh Gaurav'],
         typeSpeed: 70,
         backSpeed: 50,
         startDelay: 500,
@@ -74,7 +74,7 @@ export default function MyName(props: { finishedLoading: boolean }) {
         initial="initial"
         animate="animate"
         custom={2}
-        className="text-gray-300 font-bold text-4xl lg:text-7xl sm:text-5xl md:text-6xl mt-4"
+        className="text-gray-300 font-bold text-3xl lg:text-7xl sm:text-5xl md:text-5xl mt-4"
       >
         <span ref={nameRef}></span>
       </motion.h1>
@@ -84,11 +84,12 @@ export default function MyName(props: { finishedLoading: boolean }) {
         initial="initial"
         animate="animate"
         custom={3}
-        className="text-gray-400 font-bold text-3xl lg:text-6xl sm:text-4xl md:text-5xl mt-4"
+        className="text-gray-400 font-bold text-xl lg:text-6xl sm:text-4xl md:text-5xl mt-4"
       >
         <span ref={taglineRef}></span>
       </motion.h2>
       
+      {/* Fixed the text container to prevent text from wrapping poorly on small screens */}
       <motion.div
         variants={fadeInAnimationVariants}
         initial="initial"
@@ -96,22 +97,24 @@ export default function MyName(props: { finishedLoading: boolean }) {
         custom={4}
         className="text-gray-400 font-Header text-sm md:text-lg sm:text-md mt-10 tracking-wider max-w-3xl"
       >
-        <p className="mb-4">
-          I am a <span className="text-AAsecondary">Full Stack Developer</span> with strong{" "}
-          <span className="text-AAsecondary">problem-solving skills</span>, specializing in creating exceptional digital
-          experiences.
-        </p>
-        <p className="mb-4">
-          With expertise in both <span className="text-AAsecondary">front-end</span> and{" "}
-          <span className="text-AAsecondary">back-end development</span>, along with a curiosity for leveraging{" "}
-          <span className="text-AAsecondary">AI-driven applications</span>. I enjoy solving challenging projects that
-          drive <span className="text-AAsecondary">innovation</span> and deliver high-quality results.
-        </p>
-        <p>
-          My experience in <span className="text-AAsecondary">collaborating with development teams</span> has strengthened
-          my ability to work effectively with others and translate ideas into functional solutions. I am excited to
-          contribute to dynamic projects that push the boundaries of technology.
-        </p>
+        <div className="space-y-4">
+          <p>
+            I am a <span className="text-AAsecondary">Full Stack Developer</span> with strong{" "}
+            <span className="text-AAsecondary">problem-solving skills</span>, specializing in creating exceptional digital
+            experiences.
+          </p>
+          <p>
+            With expertise in both <span className="text-AAsecondary">front-end</span> and{" "}
+            <span className="text-AAsecondary">back-end development</span>, along with a curiosity for leveraging{" "}
+            <span className="text-AAsecondary">AI-driven applications</span>. I enjoy solving challenging projects that
+            drive <span className="text-AAsecondary">innovation</span> and deliver high-quality results.
+          </p>
+          <p>
+            My experience in <span className="text-AAsecondary">collaborating with development teams</span> has strengthened
+            my ability to work effectively with others and translate ideas into functional solutions. I am excited to
+            contribute to dynamic projects that push the boundaries of technology.
+          </p>
+        </div>
       </motion.div>
       
       <motion.div
