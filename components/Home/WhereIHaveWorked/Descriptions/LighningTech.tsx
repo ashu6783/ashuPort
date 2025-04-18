@@ -32,7 +32,7 @@ export default function LighningTech() {
         <div className="flex flex-col spacey-y-2">
           {/* Title */}
           <span className="text-gray-100 sm:text-lg text-sm font-Arimo tracking-wide">
-            Full Stack Developer Intern <span className="text-AAsecondary">@ Web Development</span>
+            SDE Intern
           </span>
           {/* Date */}
           <span className="font-mono text-xs text-gray-500">Jan 2025 - March 2025</span>
