@@ -179,67 +179,10 @@ export default function ThisCantBeReached() {
           transition={{ opacity: { delay: 2, duration: 0.5 } }}
           className="w-full  flex flex-col space-y-8"
         >
-          <span className="text-AAsecondary font-Header text-2xl">
-           Hi! This page{" "}
-            {ShowText ? (
-              <motion.span
-                animate={{ scale: ["100%", "120%"] }}
-                transition={{ scale: { delay: 4, duration: 0.5 } }}
-                className="font-bold "
-              >
-                <span className="font-bold text-white">is loading</span>
-              </motion.span>
-            ) : (
-              <span className="text-white">isn&#39;t ready</span>
-            )}{" "}
-            yet
-          </span>
-          <span className="text-AAsecondary text-md">
-            <span className="font-bold">myPortfolio </span>
-            is currently{" "}
-            {ShowText ? (
-              <motion.span
-                animate={{ scale: ["100%", "140%"] }}
-                transition={{ scale: { delay: 4, duration: 1 } }}
-                className="font-bold"
-              >
-                preparing
-              </motion.span>
-            ) : (
-              <span>initializing</span>
-            )}{" "}
-            your experience.
-          </span>
-          <div className="flex flex-col space-y-3">
-            <span className="font-Header text-AAsecondary text-lg">Please wait while:</span>
-            <div className="flex flex-col space-y-2 pl-10">
-              <span className="text-Header text-white font-Header sm:text-base text-sm">
-                <span className="text-bold text-gray-500">&bull;</span> Resources 
-                are loading
-              </span>
-              <span className="text-Header text-white font-Header sm:text-base text-sm">
-                <span className="text-bold text-gray-500">&bull;</span> Animations
-                are being prepared
-              </span>
-              <span className="text-Header text-white font-Header sm:text-bdase text-sm">
-                <span className="text-bold text-gray-500">&bull;</span> Content
-                is being rendered
-              </span>
-            </div>
-          </div>
-          <span className="text-gray-400 text-sm">
-            {ShowText ? (
-              <motion.span
-                animate={{ scale: ["100%", "120%"] }}
-                transition={{ scale: { delay: 4, duration: 0.5 } }}
-                className="font-bold text-amber-50"
-              >
-                LOADING_ALMOST_COMPLETE
-              </motion.span>
-            ) : (
-              <span>LOADING_IN_PROGRESS</span>
-            )}
-          </span>
+         <div className="text-2xl font-bold text-white">
+          Hold on for a moment!!
+         </div>
+          
         </motion.div>
       </div>
       <motion.div
