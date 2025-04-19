@@ -119,13 +119,13 @@ export default function SomethingIveBuilt() {
           absolute md:grid grid-cols-12 w-full h-full content-center"
           >
             <div className="relative rounded w-full h-full col-span-7">
-              <a href="https://userology.vercel.app" target={"_blank"} rel="noreferrer">
+              <a href="https://clip-url-frontend.vercel.app" target={"_blank"} rel="noreferrer">
                 <div
                   className="absolute w-full h-full rounded bg-AAprimary 
            transition-opacity opacity-30 hover:opacity-0 hover:cursor-pointer duration-300"
                 ></div>
               </a>
-              <Img src={"/zentrix.png"} alt={"Project Screen shot"} className={`w-full rounded h-full`} />
+              <Img src={"/clipurl.png"} alt={"Project Screen shot"} className={`w-full rounded h-full`} />
             </div>
           </div>
 
@@ -133,9 +133,9 @@ export default function SomethingIveBuilt() {
           <div className="md:absolute py-4 md:grid md:grid-cols-12 w-full h-full content-center">
             {/* Mobile Image - Below Description */}
             <div className="md:hidden w-full mb-4">
-              <a href="https://userology.vercel.app" target={"_blank"} rel="noreferrer">
+              <a href="https://clip-url-frontend.vercel.app" target={"_blank"} rel="noreferrer">
                 <Img
-                  src={"/zentrix.png"}
+                  src={"/clipurl.png"}
                   alt={"Project Screen shot"}
                   className={`w-full rounded h-auto`}
                 />
@@ -147,24 +147,22 @@ export default function SomethingIveBuilt() {
               col-span-8 flex flex-col items-start md:items-end space-y-3"
             >
               <div className="flex flex-col space-y-1 md:items-end z-10">
-                <span className="text-AAsecondary text-base">Zentrix</span>
-                <a href="https://userology.vercel.app" target="_blank" rel="noopener noreferrer">
+                <span className="text-AAsecondary text-base">ClipUrl</span>
+                <a href="https://clip-url-frontend.vercel.app" target="_blank" rel="noopener noreferrer">
                   <span className="md:text-gray-200 text-AAsecondary font-bold text-xl hover:cursor-pointer">
-                    Real time crypto,news and weather dashboard
+                    Sharper Insights — One Short URL at a Time.
                   </span>
                 </a>
               </div>
               <div className="w-full md:bg-AAtertiary rounded-md py-6 md:p-6 z-10">
                 <p className="text-gray-300 md:text-gray-400 text-left">
-                  Zentrix is a dynamic dashboard built using <span className="text-AAsecondary">Next.js, TypeScript, and React</span>,
-                  designed to deliver <span className="text-AAsecondary">real-time updates</span> for cryptocurrency, weather, and news.
-                  It features <span className="text-white">secure real-time crypto price tracking</span> powered by Redux WebSocket and the CoinCap API,
-                  along with an intuitive <span className="text-white">multi-city weather selection interface</span> using the OpenWeatherMap API.
-                  Users can monitor crypto trends with Chart.js visualizations, access real-time news updates via NewsAPI with optimized performance through lazy loading,
-                  and enjoy a fully responsive design.
-                  <span className="text-AAsecondary">This project highlights my expertise in full-stack development, API integrations, and performance optimization.</span>
+                  This URL Shortener Dashboard is a robust platform built with <span className="text-AAsecondary">React, Redux, and Tailwind CSS</span>, enabling users to easily create and manage shortened URLs.
+                  It features <span className="text-white">secure authentication</span>, a <span className="text-white">dashboard with click analytics</span> using Recharts, and <span className="text-AAsecondary">QR code generation</span> via <code className="text-white">react-qr-code</code>.
+                  Navigation is streamlined with React Router, and users can <span className="text-AAsecondary">search, paginate, and filter URLs</span> efficiently.
+                  The app uses Axios for smooth API communication and highlights my expertise in UI development, state management, and building performant full-stack applications.
                 </p>
               </div>
+
               <ul
                 className="flex flex-wrap w-full text-gray-300 md:text-gray-400
                text-sm font-Text2 md:justify-end"
@@ -177,8 +175,8 @@ export default function SomethingIveBuilt() {
                 <span className="pr-4 z-10">NewsApi</span>
               </ul>
               <div className="z-10 flex fle-row space-x-5">
-                <GithubIcon link="https://github.com/ashu6783/userology" />
-                <a href="https://userology.vercel.app" target={"_blank"} rel="noreferrer">
+                <GithubIcon link="https://github.com/ashu6783/clipURL-frontend" />
+                <a href="https://clip-url-frontend.vercel.app" target={"_blank"} rel="noreferrer">
                   <ExternalLink url={""} router={router} />
                 </a>
               </div>
@@ -330,6 +328,80 @@ export default function SomethingIveBuilt() {
               <div className="z-10 flex fle-row space-x-5">
                 <GithubIcon link="https://github.com/ashu6783/shopbizzz" />
                 <a href="https://shopbizzz-frontend.onrender.com/" target={"_blank"} rel="noreferrer">
+                  <ExternalLink url={""} router={router} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" className="relative md:grid md:grid-cols-12 w-full md:h-96">
+          {/* Left image - Desktop View */}
+          <div
+            className="hidden bg-AAprimary z-10 py-4 
+          absolute md:grid grid-cols-12 w-full h-full content-center"
+          >
+            <div className="relative rounded w-full h-full col-span-7">
+              <a href="https://userology.vercel.app" target={"_blank"} rel="noreferrer">
+                <div
+                  className="absolute w-full h-full rounded bg-AAprimary 
+           transition-opacity opacity-30 hover:opacity-0 hover:cursor-pointer duration-300"
+                ></div>
+              </a>
+              <Img src={"/zentrix.png"} alt={"Project Screen shot"} className={`w-full rounded h-full`} />
+            </div>
+          </div>
+
+          {/* right Content */}
+          <div className="md:absolute py-4 md:grid md:grid-cols-12 w-full h-full content-center">
+            {/* Mobile Image - Below Description */}
+            <div className="md:hidden w-full mb-4">
+              <a href="https://userology.vercel.app" target={"_blank"} rel="noreferrer">
+                <Img
+                  src={"/zentrix.png"}
+                  alt={"Project Screen shot"}
+                  className={`w-full rounded h-auto`}
+                />
+              </a>
+            </div>
+
+            <div
+              className="px-8 pt-8 sm:pt-12 md:py-0 xl:col-span-6 xl:col-start-7 col-start-5 
+              col-span-8 flex flex-col items-start md:items-end space-y-3"
+            >
+              <div className="flex flex-col space-y-1 md:items-end z-10">
+                <span className="text-AAsecondary text-base">Zentrix</span>
+                <a href="https://userology.vercel.app" target="_blank" rel="noopener noreferrer">
+                  <span className="md:text-gray-200 text-AAsecondary font-bold text-xl hover:cursor-pointer">
+                    Real time crypto,news and weather dashboard
+                  </span>
+                </a>
+              </div>
+              <div className="w-full md:bg-AAtertiary rounded-md py-6 md:p-6 z-10">
+                <p className="text-gray-300 md:text-gray-400 text-left">
+                  Zentrix is a dynamic dashboard built using <span className="text-AAsecondary">Next.js, TypeScript, and React</span>,
+                  designed to deliver <span className="text-AAsecondary">real-time updates</span> for cryptocurrency, weather, and news.
+                  It features <span className="text-white">secure real-time crypto price tracking</span> powered by Redux WebSocket and the CoinCap API,
+                  along with an intuitive <span className="text-white">multi-city weather selection interface</span> using the OpenWeatherMap API.
+                  Users can monitor crypto trends with Chart.js visualizations, access real-time news updates via NewsAPI with optimized performance through lazy loading,
+                  and enjoy a fully responsive design.
+                  <span className="text-AAsecondary">This project highlights my expertise in full-stack development, API integrations, and performance optimization.</span>
+                </p>
+              </div>
+              <ul
+                className="flex flex-wrap w-full text-gray-300 md:text-gray-400
+               text-sm font-Text2 md:justify-end"
+              >
+                <span className="pr-4 z-10">React.js</span>
+                <span className="pr-4 z-10">Charts.js</span>
+                <span className="pr-4 z-10">WebSocket</span>
+                <span className="pr-4 z-10">OpenWeatherApi</span>
+                <span className="pr-4 z-10">CoinCapApi</span>
+                <span className="pr-4 z-10">NewsApi</span>
+              </ul>
+              <div className="z-10 flex fle-row space-x-5">
+                <GithubIcon link="https://github.com/ashu6783/userology" />
+                <a href="https://userology.vercel.app" target={"_blank"} rel="noreferrer">
                   <ExternalLink url={""} router={router} />
                 </a>
               </div>
