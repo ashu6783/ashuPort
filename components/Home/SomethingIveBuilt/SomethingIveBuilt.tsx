@@ -168,11 +168,10 @@ export default function SomethingIveBuilt() {
                text-sm font-Text2 md:justify-end"
               >
                 <span className="pr-4 z-10">React.js</span>
-                <span className="pr-4 z-10">Charts.js</span>
-                <span className="pr-4 z-10">WebSocket</span>
-                <span className="pr-4 z-10">OpenWeatherApi</span>
-                <span className="pr-4 z-10">CoinCapApi</span>
-                <span className="pr-4 z-10">NewsApi</span>
+                <span className="pr-4 z-10">Recharts.js</span>
+                <span className="pr-4 z-10">Redux</span>
+                <span className="pr-4 z-10">React-qr-code</span>
+                <span className="pr-4 z-10">Tailwind CSS</span>
               </ul>
               <div className="z-10 flex fle-row space-x-5">
                 <GithubIcon link="https://github.com/ashu6783/clipURL-frontend" />
