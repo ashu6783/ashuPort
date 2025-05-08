@@ -1,17 +1,17 @@
-import React, { useEffect, useRef } from "react";
-import { motion } from "../../../node_modules/framer-motion/dist/framer-motion";
-import Link from "next/link";
+import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import Typed from 'typed.js';
 import { FileText, Package, Github, Linkedin, Mail, ChevronDown } from "lucide-react";
+import GitBashTerminal from "@/components/magicui/gitbashTerminal"; // Import the updated component
 
 export default function MyName(props: { finishedLoading: boolean }) {
   const router = useRouter();
   const nameRef = useRef(null);
   const taglineRef = useRef(null);
+  const [typingFinished, setTypingFinished] = useState(false);
 
   useEffect(() => {
-    // Only initialize Typed.js after loading is finished
     if (props.finishedLoading && nameRef.current) {
       const typedName = new Typed(nameRef.current, {
         strings: ['Ashutosh Gaurav'],
@@ -19,8 +19,12 @@ export default function MyName(props: { finishedLoading: boolean }) {
         backSpeed: 50,
         startDelay: 500,
         showCursor: true,
-        cursorChar: '&lt;/&gt;',
+        cursorChar: '</>',
         autoInsertCss: true,
+        onComplete: () => {
+          // Signal that the typing animation is complete
+          setTypingFinished(true);
+        }
       });
 
       const typedTagline = new Typed(taglineRef.current, {
@@ -54,11 +58,14 @@ export default function MyName(props: { finishedLoading: boolean }) {
     }),
   };
 
+  // Calculate if terminal animations should be shown based on loading status
+  const shouldShowTerminal = props.finishedLoading && typingFinished;
+
   return (
     <div className="relative h-full flex flex-col justify-center px-8 2xl:px-72 xl:px-56 lg:px-32 md:px-28 sm:px-8 py-32 sm:py-52">
       {/* Background gradient effect */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 pointer-events-none" />
-      
+
       <motion.span
         variants={fadeInAnimationVariants}
         initial="initial"
@@ -68,7 +75,7 @@ export default function MyName(props: { finishedLoading: boolean }) {
       >
         Hi, my name is
       </motion.span>
-      
+
       <motion.h1
         variants={fadeInAnimationVariants}
         initial="initial"
@@ -78,7 +85,7 @@ export default function MyName(props: { finishedLoading: boolean }) {
       >
         <span ref={nameRef}></span>
       </motion.h1>
-      
+
       <motion.h2
         variants={fadeInAnimationVariants}
         initial="initial"
@@ -88,35 +95,18 @@ export default function MyName(props: { finishedLoading: boolean }) {
       >
         <span ref={taglineRef}></span>
       </motion.h2>
-      
-      {/* Fixed the text container to prevent text from wrapping poorly on small screens */}
+
+      {/* Terminal container */}
       <motion.div
         variants={fadeInAnimationVariants}
         initial="initial"
         animate="animate"
         custom={4}
-        className="text-gray-400 font-Header text-sm md:text-lg sm:text-md mt-10 tracking-wider max-w-3xl"
+        className="text-gray-400 font-Header text-sm md:text-lg sm:text-md mt-10 tracking-wider max-w-4xl"
       >
-        <div className="space-y-4">
-          <p>
-            I am a <span className="text-AAsecondary">Full Stack Developer</span> with strong{" "}
-            <span className="text-AAsecondary">problem-solving skills</span>, specializing in creating exceptional digital
-            experiences.
-          </p>
-          <p>
-            With expertise in both <span className="text-AAsecondary">front-end</span> and{" "}
-            <span className="text-AAsecondary">back-end development</span>, along with a curiosity for leveraging{" "}
-            <span className="text-AAsecondary">AI-driven applications</span>. I enjoy solving challenging projects that
-            drive <span className="text-AAsecondary">innovation</span> and deliver high-quality results.
-          </p>
-          <p>
-            My experience in <span className="text-AAsecondary">collaborating with development teams</span> has strengthened
-            my ability to work effectively with others and translate ideas into functional solutions. I am excited to
-            contribute to dynamic projects that push the boundaries of technology.
-          </p>
-        </div>
+        <GitBashTerminal show={shouldShowTerminal} />
       </motion.div>
-      
+
       <motion.div
         variants={fadeInAnimationVariants}
         initial="initial"
@@ -137,7 +127,7 @@ export default function MyName(props: { finishedLoading: boolean }) {
           </button>
         </a>
       </motion.div>
-      
+
       {/* Social links */}
       <motion.div
         variants={fadeInAnimationVariants}
@@ -156,7 +146,7 @@ export default function MyName(props: { finishedLoading: boolean }) {
           <Mail size={22} />
         </a>
       </motion.div>
-      
+
       {/* Scroll indicator */}
       <motion.div
         variants={fadeInAnimationVariants}
@@ -167,34 +157,20 @@ export default function MyName(props: { finishedLoading: boolean }) {
       >
         <span className="text-sm mb-2 font-mono">Scroll Down</span>
         <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center pt-1">
-          <motion.div 
+          <motion.div
             className="w-1 h-2 bg-AAsecondary rounded-full"
-            animate={{ 
+            animate={{
               y: [0, 12, 0],
-              opacity: [1, 0.2, 1]
+              opacity: [1, 0.5, 1],
             }}
             transition={{
               duration: 1.5,
               repeat: Infinity,
-              repeatType: "loop"
+              repeatType: "loop",
             }}
           />
         </div>
-        <motion.div
-          animate={{ 
-            y: [0, 5, 0],
-            opacity: [0.5, 1, 0.5]
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            repeatType: "loop",
-            delay: 0.3
-          }}
-          className="mt-2"
-        >
-          <ChevronDown size={16} />
-        </motion.div>
+        <ChevronDown size={16} className="mt-2 animate-bounce" />
       </motion.div>
     </div>
   );
