@@ -184,13 +184,14 @@ export const Terminal = ({
         <div
           ref={contentRef}
           className={cn(
-            "h-full overflow-auto p-4 max-h-[calc(60vh-40px)]",
-            isMobile && "max-h-[calc(50vh-40px)]" 
+            "h-full overflow-auto p-4 max-h-[calc(60vh-40px)] scrollbar-hidden",
+            isMobile && "max-h-[calc(50vh-40px)]",
           )}
         
           style={{ 
             msOverflowStyle: "none", 
             scrollbarWidth: "none", 
+            WebkitOverflowScrolling: "touch"
           }}
         >
           <pre className="whitespace-pre-wrap overflow-x-auto">

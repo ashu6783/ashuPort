@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 import { Terminal } from "lucide-react";
 import { AnimatedSpan } from "@/components/magicui/terminal";
 
-// Git Bash themed terminal component with auto-scroll
-const GitBashTerminal = ({ show = false }) => {
+// Git Bash themed terminal component with single command focus and transition effects
+const GitBashTerminal = ({ show = true }) => {
   const [commandHistory, setCommandHistory] = useState([]);
   const [currentPath, setCurrentPath] = useState("~/portfolio");
+  const [activeCommandIndex, setActiveCommandIndex] = useState(0);
   const terminalContentRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -16,32 +16,47 @@ const GitBashTerminal = ({ show = false }) => {
   };
 
   useEffect(() => {
-    if (show) {
-      const commands = [
-        { text: "git init", delay: 0 },
-        { text: "git remote add origin https://github.com/ashutosh/portfolio.git", delay: 1200 },
-        { text: "git status", delay: 2400 },
-        { text: "git add .", delay: 3600 },
-        { text: 'git commit -m "Initialize portfolio project"', delay: 4800 }, // ✅ Fixed
-        { text: "git push -u origin main", delay: 6000 },
-        { text: "ls -la", delay: 7200 },
-        { text: "cat profile.json", delay: 8400 }
-      ];
+    // Define all commands to be executed sequentially
+    const allCommands = [
+      { text: "git init", delay: 200 },
+      { text: "git remote add origin https://github.com/ashutosh/portfolio.git", delay: 2000 },
+      { text: "git status", delay: 2000 },
+      { text: "git add .", delay: 2000 },
+      { text: 'git commit -m "Initialize portfolio project"', delay: 2000 },
+      { text: "git push -u origin main", delay: 2000 },
+      { text: "ls -la", delay: 2000 },
+      { text: "cat profile.json", delay: 2000 }
+    ];
+    
+    if (!show) return;
+    
+    // Setup the sequential display of commands
+    let timeouts = [];
+    let cumulativeDelay = 0;
+    
+    allCommands.forEach((cmd, index) => {
+      const timeout = setTimeout(() => {
+        // Add new command to history
+        setCommandHistory((prev) => {
+          // If we want to keep only the most recent command, uncomment this:
+          // return [cmd];
+          
+          // To keep all commands but fade previous ones:
+          return [...prev, cmd];
+        });
+        
+        // Update active command index
+        setActiveCommandIndex(index);
+        
+        // Scroll to show the new command
+        setTimeout(scrollToBottom, 10);
+      }, cumulativeDelay);
+      
+      timeouts.push(timeout);
+      cumulativeDelay += cmd.delay;
+    });
 
-      let timeouts = [];
-      commands.forEach((cmd) => {
-        const timeout = setTimeout(() => {
-          setCommandHistory((prev) => {
-            const newHistory = [...prev, cmd];
-            setTimeout(scrollToBottom, 10);
-            return newHistory;
-          });
-        }, cmd.delay + 800);
-        timeouts.push(timeout);
-      });
-
-      return () => timeouts.forEach((timeout) => clearTimeout(timeout));
-    }
+    return () => timeouts.forEach((timeout) => clearTimeout(timeout));
   }, [show]);
 
   useEffect(() => {
@@ -69,7 +84,7 @@ const GitBashTerminal = ({ show = false }) => {
         );
       case "git add .":
         return null;
-      case 'git commit -m "Initialize portfolio project"': // ✅ Fixed
+      case 'git commit -m "Initialize portfolio project"':
         return (
           <div className="space-y-1">
             <div>[main (root-commit) e7a43b1] Initialize portfolio project</div>
@@ -142,9 +157,18 @@ const GitBashTerminal = ({ show = false }) => {
         className="p-4 max-h-80 overflow-y-auto bg-black bg-opacity-95 space-y-2 scrollbar-hidden"
       >
         {commandHistory.map((cmd, index) => (
-          <div key={index} className="pb-2">
+          <div 
+            key={index} 
+            className={`pb-2 transition-all duration-1000 ${
+              index === activeCommandIndex 
+                ? "opacity-100" 
+                : index < activeCommandIndex 
+                  ? "opacity-25" 
+                  : "opacity-0"
+            }`}
+          >
             <AnimatedSpan
-              delay={show ? cmd.delay : 8000}
+              delay={50} // Quick display for active command
               className="flex items-center text-gray-200"
             >
               <span className="text-green-400">ashutosh@dev</span>
@@ -154,12 +178,14 @@ const GitBashTerminal = ({ show = false }) => {
               <span className="ml-2">{cmd.text}</span>
             </AnimatedSpan>
 
-            <AnimatedSpan
-              delay={show ? cmd.delay + 600 : 9999}
-              className="text-gray-200 mt-1 ml-0 block"
-            >
-              {renderCommandOutput(cmd.text)}
-            </AnimatedSpan>
+            {index === activeCommandIndex && (
+              <AnimatedSpan
+                delay={200} // Short delay for the output
+                className="text-gray-200 mt-1 ml-0 block"
+              >
+                {renderCommandOutput(cmd.text)}
+              </AnimatedSpan>
+            )}
           </div>
         ))}
 
