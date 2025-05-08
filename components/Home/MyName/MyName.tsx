@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import Typed from 'typed.js';
-import { FileText, Package, Github, Linkedin, Mail, ChevronDown } from "lucide-react";
+import { FileText, Package, ChevronDown } from "lucide-react";
 import GitBashTerminal from "@/components/magicui/gitbashTerminal"; // Import the updated component
 
 export default function MyName(props: { finishedLoading: boolean }) {
@@ -62,7 +62,7 @@ export default function MyName(props: { finishedLoading: boolean }) {
   const shouldShowTerminal = props.finishedLoading && typingFinished;
 
   return (
-    <div className="relative h-full flex flex-col justify-center px-8 2xl:px-72 xl:px-56 lg:px-32 md:px-28 sm:px-8 py-32 sm:py-52">
+    <div className="relative h-full flex flex-col justify-center px-8 2xl:px-72 xl:px-56 lg:px-32 md:px-28 sm:px-8 py-32 sm:py-30">
       {/* Background gradient effect */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 pointer-events-none" />
 
@@ -95,6 +95,7 @@ export default function MyName(props: { finishedLoading: boolean }) {
       >
         <span ref={taglineRef}></span>
       </motion.h2>
+      
 
       {/* Terminal container */}
       <motion.div
@@ -102,7 +103,7 @@ export default function MyName(props: { finishedLoading: boolean }) {
         initial="initial"
         animate="animate"
         custom={4}
-        className="text-gray-400 font-Header text-sm md:text-lg sm:text-md mt-10 tracking-wider max-w-4xl"
+        className="text-gray-400 font-Header sm:pb-10 text-sm md:text-lg sm:text-md mt-10 tracking-wider max-w-4xl"
       >
         <GitBashTerminal show={shouldShowTerminal} />
       </motion.div>
@@ -136,15 +137,7 @@ export default function MyName(props: { finishedLoading: boolean }) {
         custom={6}
         className="mt-12 flex gap-6"
       >
-        <a href="https://github.com" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-AAsecondary transition-colors duration-300">
-          <Github size={22} />
-        </a>
-        <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-AAsecondary transition-colors duration-300">
-          <Linkedin size={22} />
-        </a>
-        <a href="mailto:example@email.com" className="text-gray-400 hover:text-AAsecondary transition-colors duration-300">
-          <Mail size={22} />
-        </a>
+       
       </motion.div>
 
       {/* Scroll indicator */}
