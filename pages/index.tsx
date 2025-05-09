@@ -6,7 +6,7 @@ import SocialMediaArround from "../components/Home/SocialMediaArround/SocialMedi
 import { AboutMe } from "@/components/Home/AboutMe/AboutMe";
 import ThisCantBeReached from "../components/Home/ThisSiteCantBeReached/ThisCantBeReached";
 import WhereIHaveWorked from "../components/Home/WhereIHaveWorked/WhereIHaveWorked";
-import SomethingIveBuilt from "../components/Home/SomethingIveBuilt/SomethingIveBuilt";
+import SomethingIveBuilt from "@/components/Home/SomethingIveBuilt/CardsPreview";
 import GetInTouch from "../components/Home/GetInTouch/GetInTouch";
 import Footer from "../components/Footer/Footer";
 import AppContext from "../components/AppContextFolder/AppContext";
