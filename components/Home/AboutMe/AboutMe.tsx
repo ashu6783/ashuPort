@@ -27,9 +27,10 @@ const Circle = forwardRef<
 
 Circle.displayName = "Circle";
 
-export function AboutMe(props, ref) {
+export function AboutMe() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   // Check if we're on mobile based on screen width
   useEffect(() => {
@@ -39,6 +40,9 @@ export function AboutMe(props, ref) {
 
     // Initial check
     checkMobile();
+    
+    // Mark as mounted to ensure refs are properly set
+    setMounted(true);
 
     // Add resize listener
     window.addEventListener('resize', checkMobile);
@@ -92,6 +96,10 @@ export function AboutMe(props, ref) {
 
   // Helper function to create beams - only shown if both elements are visible
   const createBeam = (fromRef, curvature = 0, endYOffset = 0, reverse = false) => {
+    // Don't render beams until component is mounted
+    if (!mounted) return null;
+    
+    // Ensure references exist
     if (!fromRef?.current || !circleRefs.profile?.current) return null;
     
     return (
@@ -103,7 +111,7 @@ export function AboutMe(props, ref) {
         endYOffset={endYOffset}
         reverse={reverse}
         pathWidth={isMobile ? 1 : 2}
-        pathOpacity={isMobile ? 0.15 : 0.2}
+        pathOpacity={isMobile ? 0.15 : 0.25} // Increased opacity for better visibility
       />
     );
   };
@@ -220,26 +228,31 @@ export function AboutMe(props, ref) {
         )}
       </div>
 
-      {/* Connect Left Side Icons - For Both Mobile & Desktop */}
-      {createBeam(circleRefs.nextjs, isMobile ? 10 : 50, 0)}
-      {createBeam(circleRefs.typescript, isMobile ? 5 : 20, 5)}
-      {createBeam(circleRefs.tailwind, isMobile ? 0 : 5, 10)}
-      {createBeam(circleRefs.mongodb, isMobile ? -5 : -35, 15)}
-      {createBeam(circleRefs.nodejs, isMobile ? -10 : -15, 0)}
-      {createBeam(circleRefs.sql, isMobile ? -5 : 5, 5)}
-      {createBeam(circleRefs.jira, isMobile ? 0 : -15, 10)}
+      {/* Render beams only after the component is mounted and refs are set */}
+      {mounted && (
+        <>
+          {/* Connect Left Side Icons - For Both Mobile & Desktop */}
+          {createBeam(circleRefs.nextjs, isMobile ? 10 : 50, 0)}
+          {createBeam(circleRefs.typescript, isMobile ? 5 : 20, 5)}
+          {createBeam(circleRefs.tailwind, isMobile ? 0 : 5, 10)}
+          {createBeam(circleRefs.mongodb, isMobile ? -5 : -35, 15)}
+          {createBeam(circleRefs.nodejs, isMobile ? -10 : -15, 0)}
+          {createBeam(circleRefs.sql, isMobile ? -5 : 5, 5)}
+          {createBeam(circleRefs.jira, isMobile ? 0 : -15, 10)}
 
-      {/* Connect Right Side Icons - For Both Mobile & Desktop */}
-      {createBeam(circleRefs.javascript, isMobile ? 10 : -20, 0, true)}
-      {createBeam(circleRefs.redis, isMobile ? 5 : -20, 5, true)}
-      {createBeam(circleRefs.api, isMobile ? 0 : -10, 10, true)}
-      {createBeam(circleRefs.react, isMobile ? -5 : 50, 0, true)}
-      
-      {/* Fix the Gemini beam - Ensure it always renders */}
-      {createBeam(circleRefs.gemini, isMobile ? -10 : 25, 5, true)}
-      
-      {createBeam(circleRefs.github, isMobile ? 0 : 15, 10, true)}
-      {createBeam(circleRefs.vs, isMobile ? 5 : -12, 15, true)}
+          {/* Connect Right Side Icons - For Both Mobile & Desktop */}
+          {createBeam(circleRefs.javascript, isMobile ? 10 : -20, 0, true)}
+          {createBeam(circleRefs.redis, isMobile ? 5 : -20, 5, true)}
+          {createBeam(circleRefs.api, isMobile ? 0 : -10, 10, true)}
+          {createBeam(circleRefs.react, isMobile ? -5 : 50, 0, true)}
+          
+          {/* Fix the Gemini beam - Ensure it always renders */}
+          {createBeam(circleRefs.gemini, isMobile ? -10 : 25, 5, true)}
+          
+          {createBeam(circleRefs.github, isMobile ? 0 : 15, 10, true)}
+          {createBeam(circleRefs.vs, isMobile ? 5 : -12, 15, true)}
+        </>
+      )}
     </div>
   );
 }
