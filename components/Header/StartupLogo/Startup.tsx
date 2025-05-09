@@ -1,11 +1,10 @@
 import React from "react";
-import { motion } from "../../../node_modules/framer-motion/dist/framer-motion";
 import {
   AnimatedSpan,
   Terminal,
   TypingAnimation,
 } from "@/components/magicui/startupTerminal";
-const Startup = (props) => {
+const Startup = () => {
 
 
   return (

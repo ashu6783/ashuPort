@@ -27,31 +27,31 @@ const GitBashTerminal = ({ show = true }) => {
       { text: "ls -la", delay: 2000 },
       { text: "cat profile.json", delay: 2000 }
     ];
-    
+
     if (!show) return;
-    
+
     // Setup the sequential display of commands
     let timeouts = [];
     let cumulativeDelay = 0;
-    
+
     allCommands.forEach((cmd, index) => {
       const timeout = setTimeout(() => {
         // Add new command to history
         setCommandHistory((prev) => {
           // If we want to keep only the most recent command, uncomment this:
           // return [cmd];
-          
+
           // To keep all commands but fade previous ones:
           return [...prev, cmd];
         });
-        
+
         // Update active command index
         setActiveCommandIndex(index);
-        
+
         // Scroll to show the new command
         setTimeout(scrollToBottom, 10);
       }, cumulativeDelay);
-      
+
       timeouts.push(timeout);
       cumulativeDelay += cmd.delay;
     });
@@ -119,10 +119,10 @@ const GitBashTerminal = ({ show = true }) => {
         );
       case "cat profile.json":
         return (
-          <div className="text-yellow-300 space-y-1">
+          <pre className="text-yellow-300 whitespace-pre-wrap">
             {`{
-  "name": "Ashutosh Gaurav",
-  "title": "Full Stack Developer",
+  "college": "Indian Institute of Information Technology Ranchi",
+  "batch":"2022-2026",
   "skills": [
     "Front-end Development",
     "Back-end Development",
@@ -133,8 +133,9 @@ const GitBashTerminal = ({ show = true }) => {
   "mission": "Creating exceptional digital experiences",
   "status": "Ready to contribute to dynamic projects"
 }`}
-          </div>
+          </pre>
         );
+
       default:
         return null;
     }
@@ -154,18 +155,17 @@ const GitBashTerminal = ({ show = true }) => {
 
       <div
         ref={terminalContentRef}
-        className="p-4 max-h-80 overflow-y-auto bg-black bg-opacity-95 space-y-2 scrollbar-hidden"
+        className="p-4 h-[300px] overflow-y-auto bg-black bg-opacity-95 space-y-2 scrollbar-hide"
       >
         {commandHistory.map((cmd, index) => (
-          <div 
-            key={index} 
-            className={`pb-2 transition-all duration-1000 ${
-              index === activeCommandIndex 
-                ? "opacity-100" 
-                : index < activeCommandIndex 
-                  ? "opacity-25" 
-                  : "opacity-0"
-            }`}
+          <div
+            key={index}
+            className={`pb-2 transition-all duration-1000 ${index === activeCommandIndex
+              ? "opacity-100"
+              : index < activeCommandIndex
+                ? "opacity-25"
+                : "opacity-0"
+              }`}
           >
             <AnimatedSpan
               delay={50} // Quick display for active command

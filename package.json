@@ -29,7 +29,7 @@
     "isomorphic-dompurify": "^2.20.0",
     "leaflet": "^1.8.0",
     "lucide-react": "^0.507.0",
-    "motion": "^12.6.5",
+    "motion": "^12.10.4",
     "next": "14.2.21",
     "react": "^18.2.0",
     "react-cookie": "^4.1.1",

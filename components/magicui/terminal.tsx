@@ -155,7 +155,7 @@ export const Terminal = ({
         "z-10 w-full rounded-md border border-gray-700 shadow-lg backdrop-blur-md transition-all duration-300 ease-in-out overflow-hidden",
         "bg-black", // Git Bash black background
         "md:w-full w-full",
-        isMobile && isCollapsed ? "h-12" : "h-auto", // Collapse height on mobile when collapsed
+        isMobile && isCollapsed ? "h-12" : "h-[500px]", // Collapse height on mobile when collapsed
         className,
       )}
     >
@@ -184,7 +184,7 @@ export const Terminal = ({
         <div
           ref={contentRef}
           className={cn(
-            "h-full overflow-auto p-4 max-h-[calc(60vh-40px)] scrollbar-hidden",
+            "h-full overflow-auto p-4 max-h-[calc(60vh-40px)] ",
             isMobile && "max-h-[calc(50vh-40px)]",
           )}
         

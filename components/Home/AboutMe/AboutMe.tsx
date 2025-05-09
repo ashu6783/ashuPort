@@ -1,143 +1,245 @@
-import React from "react";
-import Img from "../../../components/smallComp/image/Img";
-import { ChevronRight, Briefcase, GraduationCap, MapPin, Code } from "lucide-react";
+"use client";
 
-export default function AboutMe(props) {
-  const technologies = [
-    {
-      category: "Frontend",
-      techs: ["React/Next.js", "TypeScript/JavaScript", "Redux/Context API", "Tailwind CSS"]
-    },
-    {
-      category: "Backend",
-      techs: ["Node.js", "Express.js", "MongoDB", "RESTful APIs"]
-    },
-    {
-      category: "Tools",
-      techs: ["Git/GitHub", "VS Code", "Postman", "Figma"]
-    }
-  ];
+import React, { forwardRef, useRef, useEffect, useState } from "react";
+
+import { cn } from "@/lib/utils";
+import { AnimatedBeam } from "@/components/magicui/animated-beam";
+import Image from "next/image";
+import ArrowIcon from "@/components/Icons/ArrowIcon";
+
+const Circle = forwardRef<
+  HTMLDivElement,
+  { className?: string; children?: React.ReactNode }
+>(({ className, children }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "z-10 flex items-center justify-center rounded-full border-2 bg-white p-2 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
+        "size-8 sm:size-10 md:size-12", // Responsive sizes
+        className,
+      )}
+    >
+      {children}
+    </div>
+  );
+});
+
+Circle.displayName = "Circle";
+
+export function AboutMe(props, ref) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if we're on mobile based on screen width
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // 768px is standard md breakpoint
+    };
+
+    // Initial check
+    checkMobile();
+
+    // Add resize listener
+    window.addEventListener('resize', checkMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Create refs for technologies
+  const circleRefs = {
+    // Core skills (always visible)
+    profile: useRef<HTMLDivElement>(null),
+    react: useRef<HTMLDivElement>(null),
+    nextjs: useRef<HTMLDivElement>(null),
+    javascript: useRef<HTMLDivElement>(null),
+    typescript: useRef<HTMLDivElement>(null),
+    
+    // Additional skills (may be hidden on smaller screens)
+    tailwind: useRef<HTMLDivElement>(null),
+    nodejs: useRef<HTMLDivElement>(null),
+    mongodb: useRef<HTMLDivElement>(null),
+    sql: useRef<HTMLDivElement>(null),
+    redis: useRef<HTMLDivElement>(null),
+    
+    // Tools (may be hidden on smaller screens)
+    github: useRef<HTMLDivElement>(null),
+    figma: useRef<HTMLDivElement>(null),
+    vs: useRef<HTMLDivElement>(null),
+    jira: useRef<HTMLDivElement>(null),
+    
+    // Extra technologies (hidden on mobile)
+    api: useRef<HTMLDivElement>(null),
+    gemini: useRef<HTMLDivElement>(null),
+    leaflet: useRef<HTMLDivElement>(null),
+    vercel: useRef<HTMLDivElement>(null),
+    express: useRef<HTMLDivElement>(null),
+  };
+
+  // Helper function to create a circle with icon
+  const createCircle = (ref, iconPath, altText) => (
+    <Circle ref={ref}>
+      <Image
+        src={iconPath}
+        alt={altText}
+        width={20}
+        height={20}
+        className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
+      />
+    </Circle>
+  );
+
+  // Helper function to create beams - only shown if both elements are visible
+  const createBeam = (fromRef, curvature = 0, endYOffset = 0, reverse = false) => {
+    if (!fromRef?.current || !circleRefs.profile?.current) return null;
+    
+    return (
+      <AnimatedBeam
+        containerRef={containerRef}
+        fromRef={fromRef}
+        toRef={circleRefs.profile}
+        curvature={curvature}
+        endYOffset={endYOffset}
+        reverse={reverse}
+        pathWidth={isMobile ? 1 : 2}
+        pathOpacity={isMobile ? 0.15 : 0.2}
+      />
+    );
+  };
 
   return (
-    <div 
-      id="aboutSection" 
-      data-aos="fade-up" 
-      className="snap-start flex flex-col items-center py-20 bg-AAprimary relative overflow-hidden"
+    <div
+      className="relative flex min-h-[400px] md:h-[500px] lg:h-[600px] w-full items-center justify-center overflow-hidden p-4 md:p-10 flex-col"
+      ref={containerRef}
     >
-      {/* Background accents */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-AAsecondary opacity-5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-AAsecondary opacity-5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
-      
-      <div className="flex flex-col space-y-12 px-4 sm:px-0 w-full sm:w-[500px] md:w-[700px] lg:w-[900px] xl:w-[1000px] z-10">
-        {/* Section Header */}
+      {/* Section Header */}
+      <section className="flex flex-row items-center justify-start w-full max-w-6xl px-4 md:px-0 mb-6 md:mb-12">
         <div className="flex flex-row items-center">
-          <div className="flex flex-row items-center mr-4">
-            <span className="text-AAsecondary font-mono text-lg sm:text-xl"> 01.</span>
-            <h2 className="text-gray-200 font-bold tracking-wider text-xl sm:text-3xl pl-2">
-              About Me
-            </h2>
-          </div>
-          <div className="bg-gray-500 h-[0.2px] w-full sm:w-96 ml-4 opacity-30"></div>
+          <ArrowIcon className="flex-none h-4 md:h-6 w-4 md:w-5 text-AAsecondary" />
+          <span className="text-AAsecondary font-sans text-sm sm:text-xl"> 01.</span>
         </div>
-        
-        {/* Content Container */}
-        <div className="w-full flex flex-col lg:flex-row gap-12">
-          {/* Left Column - Text Content */}
-          <div className="w-full lg:w-3/5 space-y-6">
-            {/* Bio Paragraphs */}
-            <div className="space-y-4 text-base leading-relaxed">
-              <div className="font-medium text-gray-300">
-                Hola! Myself <span className="text-white font-semibold">Ashutosh Gaurav</span>, and I am a passionate{" "}
-                <span className="text-AAsecondary font-semibold">Full Stack Software Developer</span> with strong problem-solving skills.
-              </div>
-              
-              <div className="flex items-start space-x-2 text-gray-400">
-                <GraduationCap className="flex-shrink-0 w-5 h-5 text-AAsecondary mt-1" />
-                <p>
-                  Pre-final year (6th semester) student at the{" "}
-                  <span className="text-AAsecondary font-medium">Indian Institute of Information Technology Ranchi (IIIT R)</span>,
-                  pursuing a degree in Electronics and Communication Engineering (ECE).
-                </p>
-              </div>
-              
-              <div className="flex items-start space-x-2 text-gray-400">
-                <MapPin className="flex-shrink-0 w-5 h-5 text-AAsecondary mt-1" />
-                <p>
-                  I hail from <span className="text-AAsecondary font-medium">Lakhimpur Kheri, Uttar Pradesh, India</span>, and my dedication
-                  to software development has driven me to explore full-stack engineering extensively.
-                </p>
-              </div>
-              
-              <div className="flex items-start space-x-2 text-gray-400">
-                <Briefcase className="flex-shrink-0 w-5 h-5 text-AAsecondary mt-1" />
-                <p>
-                  I gained valuable industry experience during my internship at{" "}
-                  <span className="text-AAsecondary font-medium">Lightning Technologies</span> as a
-                  <span className="text-AAsecondary font-medium"> SDE Intern</span>. There, I worked extensively on
-                  data visualization, handling real-time data streams, and integrating dashboards to present meaningful
-                  insights.
-                </p>
-              </div>
-              
-              <p className="text-gray-400">
-                My journey in software engineering has been driven by a strong passion for problem-solving, innovation,
-                and continuous learning. I am always interested to keep learning and improve my skills to make a positive impact in the tech world.
-              </p>
+
+        <span className="text-gray-200 opacity-85 font-bold tracking-wider text-lg md:text-2xl px-3">
+          About Me
+        </span>
+        <div className="bg-gray-400 h-[0.2px] w-16 sm:w-44 md:w-80"></div>
+      </section>
+
+      {/* Main Content with Icons */}
+      <div className="flex w-full max-w-6xl items-center justify-center mt-4 md:mt-8">
+        {isMobile ? (
+          /* Mobile Layout - Vertical stack with fewer icons */
+          <div className="flex flex-col items-center justify-center w-full gap-10">
+            {/* Top Row - 2 icons */}
+            <div className="flex flex-row justify-center gap-16">
+              {createCircle(circleRefs.nextjs, "/nextjs.svg", "NextJS Icon")}
+              {createCircle(circleRefs.typescript, "/ts.svg", "TypeScript Icon")}
             </div>
             
-            {/* Technologies Section */}
-            <div className="pt-4">
-              <div className="flex items-center mb-4 space-x-2">
-                <Code className="w-5 h-5 text-AAsecondary" />
-                <h3 className="text-lg font-semibold text-gray-300">Technologies I have been working with:</h3>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {technologies.map((techGroup, groupIndex) => (
-                  <div key={groupIndex} className="space-y-3">
-                    <h4 className="text-sm font-semibold text-white/90 uppercase tracking-wider">{techGroup.category}</h4>
-                    <div className="space-y-2">
-                      {techGroup.techs.map((tech, techIndex) => (
-                        <div key={techIndex} className="flex items-center space-x-2">
-                          <ChevronRight className="h-3.5 w-3.5 text-AAsecondary" />
-                          <span className="text-gray-400 text-sm">{tech}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
+            {/* Second Row - 3 icons */}
+            <div className="flex flex-row justify-center gap-12">
+              {createCircle(circleRefs.react, "/react.svg", "React Icon")}
+              {createCircle(circleRefs.javascript, "/js.svg", "Javascript Icon")}
+              {createCircle(circleRefs.tailwind, "/tailwind.svg", "TailwindCSS Icon")}
+            </div>
+            
+            {/* Center profile */}
+            <Circle ref={circleRefs.profile} className="size-16 md:size-20">
+              <Image
+                src="/ashu.jpg"
+                alt="Profile icon"
+                width={48}
+                height={48}
+                className="rounded-full"
+              />
+            </Circle>
+            
+            {/* Fourth Row - 3 icons */}
+            <div className="flex flex-row justify-center gap-12">
+              {createCircle(circleRefs.nodejs, "/node.svg", "NodeJS Icon")}
+              {createCircle(circleRefs.mongodb, "/mongodb.svg", "MongoDB Icon")}
+              {createCircle(circleRefs.sql, "/sql.svg", "SQL Icon")}
+            </div>
+            
+            {/* Bottom Row - 2 icons */}
+            <div className="flex flex-row justify-center gap-16">
+              {createCircle(circleRefs.github, "/github.svg", "Github Icon")}
+              {createCircle(circleRefs.vs, "/vs.svg", "VS Code Icon")}
+            </div>
+            
+            {/* Add Gemini to mobile layout */}
+            <div className="flex flex-row justify-center gap-16">
+              {createCircle(circleRefs.gemini, "/gemini.svg", "Gemini Icon")}
             </div>
           </div>
-          
-          {/* Right Column - Image */}
-          <div className="w-full lg:w-2/5 flex justify-center items-center">
-            <div className="relative max-w-xs">
-              {/* Border frame */}
-              <div 
-                className="absolute w-full h-full border-2 border-AAsecondary rounded-md translate-x-4 translate-y-4 
-                transition-transform duration-300 group-hover:translate-x-6 group-hover:translate-y-6"
-              ></div>
-              
-              {/* Image container */}
-              <div className="relative group rounded-md overflow-hidden border border-gray-700">
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-AAsecondary/20 group-hover:bg-transparent transition-all duration-300 z-10"></div>
-                
-                {/* Image */}
-                <Img
-                  src={"/ashutosh.jpg"}
-                  className="w-full h-full object-cover rounded-md grayscale-[30%] group-hover:grayscale-0 transition-all duration-300"
-                  alt="Ashutosh Gaurav"
-                />
-                
-                {/* Hover effects */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-AAsecondary/40 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
-              </div>
+        ) : (
+          /* Desktop Layout - Horizontal layout with all icons */
+          <div className="flex flex-row items-center justify-between w-full">
+            {/* Far Left Group (4 icons) */}
+            <div className="flex flex-col gap-4">
+              {createCircle(circleRefs.nextjs, "/nextjs.svg", "NextJS Icon")}
+              {createCircle(circleRefs.typescript, "/ts.svg", "TypeScript Icon")}
+              {createCircle(circleRefs.tailwind, "/tailwind.svg", "TailwindCSS Icon")}
+              {createCircle(circleRefs.mongodb, "/mongodb.svg", "MongoDB Icon")}
+            </div>
+
+            {/* Left of Profile (3 icons) */}
+            <div className="flex flex-col gap-4">
+              {createCircle(circleRefs.nodejs, "/node.svg", "NodeJS Icon")}
+              {createCircle(circleRefs.sql, "/sql.svg", "SQL Icon")}
+              {createCircle(circleRefs.jira, "/jira.svg", "Jira Icon")}
+            </div>
+
+            {/* Center profile */}
+            <Circle ref={circleRefs.profile} className="size-16 md:size-20">
+              <Image
+                src="/ashu.jpg"
+                alt="Profile icon"
+                width={60}
+                height={60}
+                className="rounded-full"
+              />
+            </Circle>
+
+            {/* Right of Profile (3 icons) */}
+            <div className="flex flex-col gap-4">
+              {createCircle(circleRefs.javascript, "/js.svg", "Javascript Icon")}
+              {createCircle(circleRefs.redis, "/redis.svg", "Redis Icon")}
+              {createCircle(circleRefs.api, "/api.svg", "API Icon")}
+            </div>
+
+            {/* Far Right (4 icons) */}
+            <div className="flex flex-col gap-4">
+              {createCircle(circleRefs.react, "/react.svg", "React Icon")}
+              {createCircle(circleRefs.gemini, "/gemini.svg", "Gemini Icon")}
+              {createCircle(circleRefs.github, "/github.svg", "Github Icon")}
+              {createCircle(circleRefs.vs, "/vs.svg", "VS Code Icon")}
             </div>
           </div>
-        </div>
+        )}
       </div>
+
+      {/* Connect Left Side Icons - For Both Mobile & Desktop */}
+      {createBeam(circleRefs.nextjs, isMobile ? 10 : 50, 0)}
+      {createBeam(circleRefs.typescript, isMobile ? 5 : 20, 5)}
+      {createBeam(circleRefs.tailwind, isMobile ? 0 : 5, 10)}
+      {createBeam(circleRefs.mongodb, isMobile ? -5 : -35, 15)}
+      {createBeam(circleRefs.nodejs, isMobile ? -10 : -15, 0)}
+      {createBeam(circleRefs.sql, isMobile ? -5 : 5, 5)}
+      {createBeam(circleRefs.jira, isMobile ? 0 : -15, 10)}
+
+      {/* Connect Right Side Icons - For Both Mobile & Desktop */}
+      {createBeam(circleRefs.javascript, isMobile ? 10 : -20, 0, true)}
+      {createBeam(circleRefs.redis, isMobile ? 5 : -20, 5, true)}
+      {createBeam(circleRefs.api, isMobile ? 0 : -10, 10, true)}
+      {createBeam(circleRefs.react, isMobile ? -5 : 50, 0, true)}
+      
+      {/* Fix the Gemini beam - Ensure it always renders */}
+      {createBeam(circleRefs.gemini, isMobile ? -10 : 25, 5, true)}
+      
+      {createBeam(circleRefs.github, isMobile ? 0 : 15, 10, true)}
+      {createBeam(circleRefs.vs, isMobile ? 5 : -12, 15, true)}
     </div>
   );
 }

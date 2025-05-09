@@ -28,7 +28,7 @@ export default function MyName(props: { finishedLoading: boolean }) {
       });
 
       const typedTagline = new Typed(taglineRef.current, {
-        strings: ['I turn ideas into reality.', 'I build digital experiences.', 'I create innovative solutions.'],
+        strings: ['I am into frontend dev..', 'I am into backend dev..', 'I am into gen AI..'],
         typeSpeed: 60,
         backSpeed: 40,
         startDelay: 1500,
@@ -138,32 +138,6 @@ export default function MyName(props: { finishedLoading: boolean }) {
         className="mt-12 flex gap-6"
       >
        
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        variants={fadeInAnimationVariants}
-        initial="initial"
-        animate="animate"
-        custom={7}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-400"
-      >
-        <span className="text-sm mb-2 font-mono">Scroll Down</span>
-        <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center pt-1">
-          <motion.div
-            className="w-1 h-2 bg-AAsecondary rounded-full"
-            animate={{
-              y: [0, 12, 0],
-              opacity: [1, 0.5, 1],
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              repeatType: "loop",
-            }}
-          />
-        </div>
-        <ChevronDown size={16} className="mt-2 animate-bounce" />
       </motion.div>
     </div>
   );
