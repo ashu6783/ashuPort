@@ -27,7 +27,8 @@ const Circle = forwardRef<
 
 Circle.displayName = "Circle";
 
-export function AboutMe() {
+// Convert AboutMe to a forwardRef component
+export const AboutMe = forwardRef<HTMLDivElement, {}>(function AboutMe(props, ref) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -116,10 +117,21 @@ export function AboutMe() {
     );
   };
 
+  // Use useEffect to sync the external ref with our local containerRef
+  useEffect(() => {
+    if (ref && containerRef.current) {
+      if (typeof ref === 'function') {
+        ref(containerRef.current);
+      } else {
+        ref.current = containerRef.current;
+      }
+    }
+  }, [ref, containerRef.current]);
+
   return (
     <div
       className="relative flex min-h-[400px] md:h-[500px] lg:h-[600px] w-full items-center justify-center overflow-hidden p-4 md:p-10 flex-col"
-      ref={containerRef}
+      ref={containerRef} // Always use our local containerRef for internal component logic
     >
       {/* Section Header */}
       <section className="flex flex-row items-center justify-start w-full max-w-6xl px-4 md:px-0 mb-6 md:mb-12">
@@ -255,4 +267,4 @@ export function AboutMe() {
       )}
     </div>
   );
-}
+});
