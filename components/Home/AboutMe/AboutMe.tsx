@@ -126,7 +126,7 @@ export const AboutMe = forwardRef<HTMLDivElement, {}>(function AboutMe(props, re
         ref.current = containerRef.current;
       }
     }
-  }, [ref, containerRef.current]);
+  }, [ref]);
 
   return (
     <div
@@ -149,11 +149,11 @@ export const AboutMe = forwardRef<HTMLDivElement, {}>(function AboutMe(props, re
       {/* Personal Info Section - Added */}
       <div className="w-full max-w-6xl px-4 md:px-0 mb-8">
         <div className="text-gray-300 text-sm md:text-base leading-relaxed max-w-2xl">
-          <p className="mb-4">Hi, I'm <span className="text-AAsecondary font-semibold">Ashutosh Gaurav</span>, a final year undergraduate student in my 7th semester at the <span className="font-medium text-gray-200">Indian Institute of Information Technology, Ranchi</span>.</p>
+          <p className="mb-4">Hi, I&apos;m <span className="text-AAsecondary font-semibold">Ashutosh Gaurav</span>, a final year undergraduate student in my 7th semester at the <span className="font-medium text-gray-200">Indian Institute of Information Technology, Ranchi</span>.</p>
           
-          <p className="mb-4">I'm a passionate <span className="text-AAsecondary font-semibold">Full Stack Developer</span> specialized in MERN stack and NextJS applications with a focus on AI-driven solutions. I hail from Lakhimpur Kheri, Uttar Pradesh.</p>
+          <p className="mb-4">I&apos;m a passionate <span className="text-AAsecondary font-semibold">Full Stack Developer</span> specialized in MERN stack and NextJS applications with a focus on AI-driven solutions. I hail from Lakhimpur Kheri, Uttar Pradesh.</p>
           
-          <p>Below are some of the technologies I've been working with recently:</p>
+          <p>Below are some of the technologies I&apos;ve been working with recently:</p>
         </div>
       </div>
 
