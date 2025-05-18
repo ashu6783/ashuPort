@@ -58,7 +58,7 @@ const Startup = () => {
       </TypingAnimation>
 
       <TypingAnimation delay={7000} className="text-muted-foreground">
-        You may now add components.
+        Deployement successful! Your app is now live.
       </TypingAnimation>
     </Terminal>
     </div>

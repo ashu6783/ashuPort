@@ -18,11 +18,7 @@ export default function ThisCantBeReached() {
     ]
   };
   
-  const cornerTransition = {
-    rotate: { delay: 0.5, duration: 0.5 },
-    x: { delay: 0.5, duration: 0.5 },
-    y: { delay: 0.5, duration: 0.5 }
-  };
+ 
   
   return (
     <motion.div
@@ -38,10 +34,22 @@ export default function ThisCantBeReached() {
           style={{ transform: 'scale(2)' }}
         >
           {/* Base shape */}
-          <div className="absolute h-1 w-1/2 bg-AAsecondary"></div>
+       <div className="absolute h-1 w-1/2 bg-AAsecondary"></div>
+          
+          {/* Left vertical line - full height of container, positioned at left edge */}
           <div className="absolute h-full w-1 bg-AAsecondary"></div>
+          
+          {/* Bottom horizontal line - spans full width, positioned at bottom edge */}
           <div className="absolute bottom-0 h-1 w-full bg-AAsecondary"></div>
+          
+          {/* Right vertical line (partial) - positioned at right edge, starts from bottom, height is 60% of container */}
           <div className="absolute right-0 bottom-0 h-6 w-1 bg-AAsecondary"></div>
+          
+          {/* NEW: Right vertical line (top part) - positioned at right edge, starts from top, extends to complete the boundary */}
+          <div className="absolute right-0 top-0 h-4 w-1 bg-AAsecondary"></div>
+          
+          {/* NEW: Top horizontal line (right part) - completes the top boundary */}
+          <div className="absolute top-0 right-0 h-1 w-1/2 bg-AAsecondary"></div>
 
           {/* Eyes */}
           <motion.div
@@ -60,16 +68,16 @@ export default function ThisCantBeReached() {
           ></motion.div>
 
           {/* Corner */}
-          <motion.div
+          {/* <motion.div
             animate={{ rotate: -90, x: 9, y: -7 }}
-            transition={cornerTransition}
+            // transition={cornerTransition}
             className="absolute right-4 top-0 h-[18px] w-1 bg-AAsecondary"
           ></motion.div>
           <motion.div
             animate={{ rotate: 90, x: 6, y: -7 }}
-            transition={cornerTransition}
+            // transition={cornerTransition}
             className="absolute right-0 top-[14px] h-1 w-4 bg-AAsecondary"
-          ></motion.div>
+          ></motion.div> */}
           
           {/* Disappearing elements */}
           <motion.div

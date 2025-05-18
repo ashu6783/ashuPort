@@ -4,7 +4,6 @@ import MyName from "../components/Home/MyName/MyName";
 import { useContext, useEffect, useState, useRef } from "react";
 import SocialMediaArround from "../components/Home/SocialMediaArround/SocialMediaArround";
 import { AboutMe } from "@/components/Home/AboutMe/AboutMe";
-import ThisCantBeReached from "../components/Home/ThisSiteCantBeReached/ThisCantBeReached";
 import WhereIHaveWorked from "../components/Home/WhereIHaveWorked/WhereIHaveWorked";
 import SomethingIveBuilt from "@/components/Home/SomethingIveBuilt/CardsPreview";
 import GetInTouch from "../components/Home/GetInTouch/GetInTouch";
@@ -15,12 +14,9 @@ import "aos/dist/aos.css";
 import Head from "next/head";
 import ScreenSizeDetector from "../components/CustomComponents/ScreenSizeDetector";
 
-
-
 export default function Home() {
-  const [ShowElement, setShowElement] = useState(false);
-  const [ShowThisCantBeReached, setShowThisCantBeReached] = useState(true);
-  const [ShowMe, setShowMe] = useState(false);
+  const [showStartup, setShowStartup] = useState(true);
+  const [showContent, setShowContent] = useState(false);
   
   // context Variable to clearInterval
   const context = useContext(AppContext);
@@ -42,20 +38,14 @@ export default function Home() {
       document.removeEventListener("keydown", context.sharedState.typing.keyboardEvent);
     }
 
+   
     setTimeout(() => {
-      setShowElement(true);
-    }, 4500);
-
-    setTimeout(() => {
-      setShowThisCantBeReached(false);
-    }, 5400);
-
-    setTimeout(() => {
-      setShowElement(false);
-      setShowMe(true);
+      setShowStartup(false);
+      setShowContent(true);
       context.sharedState.finishedLoading = true;
       context.setSharedState(context.sharedState);
-    }, 10400);
+    }, 9000);
+    
   }, [context, context.sharedState]);
 
   useEffect(() => {
@@ -77,10 +67,7 @@ export default function Home() {
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
         <meta content={meta.description} name="description" />
-        <meta property="og:url" content={`https://anaflous.com`} />
-        <link rel="canonical" href={`https://anaflous.com`} />
         <meta property="og:type" content={meta.type} />
-        <meta property="og:site_name" content="Manu Arora" />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:image" content={meta.image} />
@@ -92,20 +79,22 @@ export default function Home() {
       </Head>
 
       <div className="relative snap-mandatory min-h-screen bg-AAprimary w-full ">
-        {context.sharedState.finishedLoading ? <></> : ShowThisCantBeReached ? <ThisCantBeReached /> : <></>}
-        {context.sharedState.finishedLoading ? <></> : ShowElement ? <Startup /> : <></>}
+        {showStartup && <Startup />}
+        
         <Header finishedLoading={context.sharedState.finishedLoading} sectionsRef={homeRef} />
         <MyName finishedLoading={context.sharedState.finishedLoading} />
         <SocialMediaArround finishedLoading={context.sharedState.finishedLoading} />
-        {context.sharedState.finishedLoading ? <AboutMe ref={aboutRef} /> : <></>}
-        {context.sharedState.finishedLoading ? <WhereIHaveWorked /> : <></>}
-        {context.sharedState.finishedLoading ? <SomethingIveBuilt /> : <></>}
-        {context.sharedState.finishedLoading ? <GetInTouch /> : <></>}
-        {context.sharedState.finishedLoading ? (
-          <Footer githubUrl={"https://github.com/ashu6783"} hideSocialsInDesktop={true} />
-        ) : (
-          <></>
+        
+        {showContent && (
+          <>
+            <AboutMe ref={aboutRef} />
+            <WhereIHaveWorked />
+            <SomethingIveBuilt />
+            <GetInTouch />
+            <Footer githubUrl={"https://github.com/ashu6783"} hideSocialsInDesktop={true} />
+          </>
         )}
+        
         {!isProd && <ScreenSizeDetector />}
       </div>
     </>
