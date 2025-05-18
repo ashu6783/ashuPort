@@ -41,13 +41,13 @@ export const AboutMe = forwardRef<HTMLDivElement, {}>(function AboutMe(props, re
 
     // Initial check
     checkMobile();
-    
+
     // Mark as mounted to ensure refs are properly set
     setMounted(true);
 
     // Add resize listener
     window.addEventListener('resize', checkMobile);
-    
+
     // Cleanup
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
@@ -60,20 +60,20 @@ export const AboutMe = forwardRef<HTMLDivElement, {}>(function AboutMe(props, re
     nextjs: useRef<HTMLDivElement>(null),
     javascript: useRef<HTMLDivElement>(null),
     typescript: useRef<HTMLDivElement>(null),
-    
+
     // Additional skills (may be hidden on smaller screens)
     tailwind: useRef<HTMLDivElement>(null),
     nodejs: useRef<HTMLDivElement>(null),
     mongodb: useRef<HTMLDivElement>(null),
     sql: useRef<HTMLDivElement>(null),
     redis: useRef<HTMLDivElement>(null),
-    
+
     // Tools (may be hidden on smaller screens)
     github: useRef<HTMLDivElement>(null),
     figma: useRef<HTMLDivElement>(null),
     vs: useRef<HTMLDivElement>(null),
     jira: useRef<HTMLDivElement>(null),
-    
+
     // Extra technologies (hidden on mobile)
     api: useRef<HTMLDivElement>(null),
     gemini: useRef<HTMLDivElement>(null),
@@ -99,10 +99,10 @@ export const AboutMe = forwardRef<HTMLDivElement, {}>(function AboutMe(props, re
   const createBeam = (fromRef, curvature = 0, endYOffset = 0, reverse = false) => {
     // Don't render beams until component is mounted
     if (!mounted) return null;
-    
+
     // Ensure references exist
     if (!fromRef?.current || !circleRefs.profile?.current) return null;
-    
+
     return (
       <AnimatedBeam
         containerRef={containerRef}
@@ -131,7 +131,7 @@ export const AboutMe = forwardRef<HTMLDivElement, {}>(function AboutMe(props, re
   return (
     <div
       className="relative flex min-h-[400px] md:h-[500px] lg:h-[600px] w-full items-center justify-center overflow-hidden p-4 md:p-10 flex-col"
-      ref={containerRef} 
+      ref={containerRef}
     >
       {/* Section Header */}
       <section className="flex flex-row items-center justify-start w-full max-w-6xl px-4 md:px-0 mb-6 md:mb-12">
@@ -149,10 +149,13 @@ export const AboutMe = forwardRef<HTMLDivElement, {}>(function AboutMe(props, re
       {/* Personal Info Section - Added */}
       <div className="w-full max-w-6xl px-4 md:px-0 mb-8">
         <div className="text-gray-300 text-sm md:text-base leading-relaxed max-w-2xl">
-          <p className="mb-4">Hi, I&apos;m <span className="text-AAsecondary font-semibold">Ashutosh Gaurav</span>, a final year undergraduate student in my 7th semester at the <span className="font-medium text-gray-200">Indian Institute of Information Technology, Ranchi</span>.</p>
-          
+          <p className="mb-4">
+            Hi, I&apos;m <span className="text-AAsecondary font-semibold">Ashutosh Gaurav</span>, a final-year undergraduate student in my 7th semester at the <span className="font-medium text-gray-200">Indian Institute of Information Technology, Ranchi</span>, pursuing a Bachelor&apos;s of Technology in <span className="font-medium text-gray-200">Electronics and Communication Engineering</span>.
+          </p>
+
+
           <p className="mb-4">I&apos;m a passionate <span className="text-AAsecondary font-semibold">Full Stack Developer</span> specialized in MERN stack and NextJS applications with a focus on AI-driven solutions. I hail from Lakhimpur Kheri, Uttar Pradesh.</p>
-          
+
           <p>Below are some of the technologies I&apos;ve been working with recently:</p>
         </div>
       </div>
@@ -167,14 +170,14 @@ export const AboutMe = forwardRef<HTMLDivElement, {}>(function AboutMe(props, re
               {createCircle(circleRefs.nextjs, "/nextjs.svg", "NextJS Icon")}
               {createCircle(circleRefs.typescript, "/ts.svg", "TypeScript Icon")}
             </div>
-            
+
             {/* Second Row - 3 icons */}
             <div className="flex flex-row justify-center gap-12">
               {createCircle(circleRefs.react, "/react.svg", "React Icon")}
               {createCircle(circleRefs.javascript, "/js.svg", "Javascript Icon")}
               {createCircle(circleRefs.tailwind, "/tailwind.svg", "TailwindCSS Icon")}
             </div>
-            
+
             {/* Center profile */}
             <Circle ref={circleRefs.profile} className="size-16 md:size-20">
               <Image
@@ -185,20 +188,20 @@ export const AboutMe = forwardRef<HTMLDivElement, {}>(function AboutMe(props, re
                 className="rounded-full"
               />
             </Circle>
-            
+
             {/* Fourth Row - 3 icons */}
             <div className="flex flex-row justify-center gap-12">
               {createCircle(circleRefs.nodejs, "/node.svg", "NodeJS Icon")}
               {createCircle(circleRefs.mongodb, "/mongodb.svg", "MongoDB Icon")}
               {createCircle(circleRefs.sql, "/sql.svg", "SQL Icon")}
             </div>
-            
+
             {/* Bottom Row - 2 icons */}
             <div className="flex flex-row justify-center gap-16">
               {createCircle(circleRefs.github, "/github.svg", "Github Icon")}
               {createCircle(circleRefs.vs, "/vs.svg", "VS Code Icon")}
             </div>
-            
+
             {/* Add Gemini to mobile layout */}
             <div className="flex flex-row justify-center gap-16">
               {createCircle(circleRefs.gemini, "/gemini.svg", "Gemini Icon")}
@@ -268,10 +271,10 @@ export const AboutMe = forwardRef<HTMLDivElement, {}>(function AboutMe(props, re
           {createBeam(circleRefs.redis, isMobile ? 5 : -20, 5, true)}
           {createBeam(circleRefs.api, isMobile ? 0 : -10, 10, true)}
           {createBeam(circleRefs.react, isMobile ? -5 : 50, 0, true)}
-          
+
           {/* Fix the Gemini beam - Ensure it always renders */}
           {createBeam(circleRefs.gemini, isMobile ? -10 : 25, 5, true)}
-          
+
           {createBeam(circleRefs.github, isMobile ? 0 : 15, 10, true)}
           {createBeam(circleRefs.vs, isMobile ? 5 : -12, 15, true)}
         </>
