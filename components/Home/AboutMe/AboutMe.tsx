@@ -146,6 +146,17 @@ export const AboutMe = forwardRef<HTMLDivElement, {}>(function AboutMe(props, re
         <div className="bg-gray-400 h-[0.2px] w-16 sm:w-44 md:w-80"></div>
       </section>
 
+      {/* Personal Info Section - Added */}
+      <div className="w-full max-w-6xl px-4 md:px-0 mb-8">
+        <div className="text-gray-300 text-sm md:text-base leading-relaxed max-w-2xl">
+          <p className="mb-4">Hi, I'm <span className="text-AAsecondary font-semibold">Ashutosh Gaurav</span>, a final year undergraduate student in my 7th semester at the <span className="font-medium text-gray-200">Indian Institute of Information Technology, Ranchi</span>.</p>
+          
+          <p className="mb-4">I'm a passionate <span className="text-AAsecondary font-semibold">Full Stack Developer</span> specialized in MERN stack and NextJS applications with a focus on AI-driven solutions. I hail from Lakhimpur Kheri, Uttar Pradesh.</p>
+          
+          <p>Below are some of the technologies I've been working with recently:</p>
+        </div>
+      </div>
+
       {/* Main Content with Icons */}
       <div className="flex w-full max-w-6xl items-center justify-center mt-4 md:mt-8">
         {isMobile ? (

@@ -107,13 +107,13 @@ const projectsData = [
     liveLink: "https://medical-rx.vercel.app"
   },
   {
-    title: "ClipUrl",
-    category: "Web Tool",
-    description: "URL shortener dashboard with analytics, QR code generation, and comprehensive management features built with React, Redux, and Tailwind CSS.",
-    image: "/clipurl.png",
-    techStack: ["React.js", "Recharts.js", "Redux", "React-qr-code", "Tailwind CSS"],
-    githubLink: "https://github.com/ashu6783/clipURL-frontend",
-    liveLink: "https://clip-url-frontend.vercel.app"
+    title: "CrestKeys",
+    category: "Plateform",
+    description: "A full-stack real estate platform enabling secure property listings, dynamic filtering, interactive map-based browsing, and seamless image uploads.",
+    image: "/crestkeys.png",
+    techStack: ["React.js","MongoDB", "Node.js","Cloudinary","Express.js","Leaflet"],
+    githubLink: "https://github.com/ashu6783/crestkeys",
+    liveLink: "https://ashureal-estate.vercel.app"
   },
   {
     title: "MedSynth",
@@ -125,6 +125,15 @@ const projectsData = [
     liveLink: "https://med-synth.vercel.app/"
   },
   {
+    title: "ClipUrl",
+    category: "Web Tool",
+    description: "URL shortener dashboard with analytics, QR code generation, and comprehensive management features built with React, Redux, and Tailwind CSS.",
+    image: "/clipurl.png",
+    techStack: ["React.js", "Recharts.js", "Redux", "React-qr-code", "Tailwind CSS"],
+    githubLink: "https://github.com/ashu6783/clipURL-frontend",
+    liveLink: "https://clip-url-frontend.vercel.app"
+  },
+  {
     title: "Shop-Bizz",
     category: "E-commerce",
     description: "Sustainable eco-friendly e-commerce platform with role-based permissions, product management dashboard, and Stripe payment integration.",
@@ -132,6 +141,15 @@ const projectsData = [
     techStack: ["React.js", "MongoDB", "Express.js", "Node.js", "Stripe"],
     githubLink: "https://github.com/ashu6783/shopbizzz",
     liveLink: "https://shopbizzz-frontend.onrender.com/"
+  },
+  {
+    title: "CSVInsight",
+    category: "Tool",
+    description: "An interactive CSV viewer with filtering, row selection, and data visualization for quick insights.",
+    image: "/csvinsight.png",
+    techStack: ["React.js", "Papaparse", "Typescript", "React-DOM"],
+    githubLink: "https://github.com/ashu6783/CSVInsight",
+    liveLink: "https://csv-insight.vercel.app/"
   },
   {
     title: "Zentrix",
