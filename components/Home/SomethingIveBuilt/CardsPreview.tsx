@@ -98,15 +98,15 @@ const ProjectCard = ({ project }) => {
 // Projects Data
 const projectsData = [
   {
-    title: "MedicalRx",
-    category: "Healthcare",
-    description: "AI-driven healthcare platform with symptom-based diagnosis and prescription generation using Gemini API. Features pharmacy locator, voice-assisted chatbot, and recovery progress tracking.",
-    image: "/MedicalRx.png",
-    techStack: ["Next.js", "Clerk", "MongoDB", "Rect-Dnd", "Redis", "React-Leaflet", "OpenStreetMap", "Gemini API"],
-    githubLink: "https://github.com/ashu6783/medicalRx",
-    liveLink: "https://medical-rx.vercel.app"
-  },
-  {
+  title: "StockFlow",
+  category: "Analytics Dashboard",
+  description: "Full-stack analytics dashboard for real-time data visualization and operations. Deployed on a production-grade AWS architecture (EC2, RDS, S3, API Gateway, Amplify) with secure VPC and IAM setup. Built with Next.js, Node.js, and PostgreSQL, featuring Redux Toolkit with RTK Query for optimized state management, Prisma ORM for role-based access control, and a responsive UI powered by Material-UI DataGrid and Recharts.",
+  image: "/Stockflow.png",
+  techStack: ["AWS EC2", "AWS RDS", "AWS S3", "AWS Amplify", "AWS API Gateway", "Next.js", "Node.js", "TypeScript", "Redux Toolkit", "RTK Query", "PostgreSQL", "Prisma", "Material-UI", "Recharts"],
+  githubLink: "https://github.com/ashu6783/inventory-management",
+  liveLink: "https://main.dikqgtfqxhucd.amplifyapp.com/"
+},
+ {
     title: "CrestKeys",
     category: "Plateform",
     description: "A full-stack real estate platform enabling secure property listings, dynamic filtering, interactive map-based browsing, and seamless image uploads.",
@@ -116,6 +116,24 @@ const projectsData = [
     liveLink: "https://ashureal-estate.vercel.app"
   },
   {
+  title: "SQLGen-AI",
+  category: "AI + Databases",
+  description: "End-to-end AI-powered application that converts natural language queries into executable SQL using advanced LLMs (Meta LLaMA-4 Maverick via Groq API). It features a modern React frontend, a Node.js/Express backend, and a FastAPI AI inference service. Includes schema visualization, ER diagrams, live SQL execution on MySQL, Swagger API docs, and full Docker support for deployment.",
+  image: "/sqlgen-ai.png",
+  techStack: ["React", "Vite", "TailwindCSS", "JavaScript", "Node.js", "Express.js", "MySQL", "Redis", "Python", "FastAPI", "Groq API", "Docker", "Swagger", "Git"],
+  githubLink: "https://github.com/ashu6783/sqlgen-ai",
+  liveLink: "https://youtu.be/XBHkLXKXpFk"
+},
+  {
+    title: "MedicalRx",
+    category: "Healthcare",
+    description: "AI-driven healthcare platform with symptom-based diagnosis and prescription generation using Gemini API. Features pharmacy locator, voice-assisted chatbot, and recovery progress tracking.",
+    image: "/MedicalRx.png",
+    techStack: ["Next.js", "Clerk", "MongoDB", "Rect-Dnd", "Redis", "React-Leaflet", "OpenStreetMap", "Gemini API"],
+    githubLink: "https://github.com/ashu6783/medicalRx",
+    liveLink: "https://medical-rx.vercel.app"
+  },
+  {
     title: "MedSynth",
     category: "Research",
     description: "Platform leveraging NVIDIA's AI MolMIM model, RDKit, and PubChem API for molecular structure design and therapeutic compound identification.",
@@ -123,15 +141,6 @@ const projectsData = [
     techStack: ["Next.js", "Ably", "MongoDB", "NextAuth", "Nvidia-MIM", "PubChem"],
     githubLink: "https://github.com/ashu6783/medicalRx",
     liveLink: "https://med-synth.vercel.app/"
-  },
-  {
-    title: "ClipUrl",
-    category: "Web Tool",
-    description: "URL shortener dashboard with analytics, QR code generation, and comprehensive management features built with React, Redux, and Tailwind CSS.",
-    image: "/clipurl.png",
-    techStack: ["React.js", "Recharts.js", "Redux", "React-qr-code", "Tailwind CSS"],
-    githubLink: "https://github.com/ashu6783/clipURL-frontend",
-    liveLink: "https://clip-url-frontend.vercel.app"
   },
   {
     title: "Shop-Bizz",

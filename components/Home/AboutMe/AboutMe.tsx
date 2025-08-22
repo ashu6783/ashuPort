@@ -60,6 +60,12 @@ export const AboutMe = forwardRef<HTMLDivElement, {}>(function AboutMe(props, re
     nextjs: useRef<HTMLDivElement>(null),
     javascript: useRef<HTMLDivElement>(null),
     typescript: useRef<HTMLDivElement>(null),
+    awsec2 : useRef<HTMLDivElement>(null),
+    awsrds : useRef<HTMLDivElement>(null),
+    awss3 : useRef<HTMLDivElement>(null),
+    awsamplify : useRef<HTMLDivElement>(null),
+    aws : useRef<HTMLDivElement>(null),
+    
 
     // Additional skills (may be hidden on smaller screens)
     tailwind: useRef<HTMLDivElement>(null),
@@ -161,124 +167,85 @@ export const AboutMe = forwardRef<HTMLDivElement, {}>(function AboutMe(props, re
       </div>
 
       {/* Main Content with Icons */}
-      <div className="flex w-full max-w-6xl items-center justify-center mt-4 md:mt-8">
-        {isMobile ? (
-          /* Mobile Layout - Vertical stack with fewer icons */
-          <div className="flex flex-col items-center justify-center w-full gap-10">
-            {/* Top Row - 2 icons */}
-            <div className="flex flex-row justify-center gap-16">
-              {createCircle(circleRefs.nextjs, "/nextjs.svg", "NextJS Icon")}
-              {createCircle(circleRefs.typescript, "/ts.svg", "TypeScript Icon")}
-            </div>
+     {/* Main Content with Icons */}
+<div className="flex w-full max-w-6xl items-center justify-center mb-[-15px] md:mb-24 sm:mb-6 md:mt-8">
+  <div className="grid grid-cols-5 md:grid-cols-11 gap-6 sm:gap-8 lg:gap-10 place-items-center">
+    
+    {/* Top Row - 10 icons */}
+    {createCircle(circleRefs.nextjs, "/nextjs.svg", "NextJS Icon")}
+    {createCircle(circleRefs.typescript, "/ts.svg", "TypeScript Icon")}
+    {createCircle(circleRefs.react, "/react.svg", "React Icon")}
+    {createCircle(circleRefs.javascript, "/js.svg", "Javascript Icon")}
+    {createCircle(circleRefs.tailwind, "/tailwind.svg", "TailwindCSS Icon")}
+     {createCircle(circleRefs.aws, "/aws.svg", "AWS Icon")}
+    {createCircle(circleRefs.nodejs, "/node.svg", "NodeJS Icon")}
+    {createCircle(circleRefs.express, "/express.svg", "Express Icon")}
+    {createCircle(circleRefs.mongodb, "/mongodb.svg", "MongoDB Icon")}
+    {createCircle(circleRefs.sql, "/sql.svg", "SQL Icon")}
+    {createCircle(circleRefs.redis, "/redis.svg", "Redis Icon")}
 
-            {/* Second Row - 3 icons */}
-            <div className="flex flex-row justify-center gap-12">
-              {createCircle(circleRefs.react, "/react.svg", "React Icon")}
-              {createCircle(circleRefs.javascript, "/js.svg", "Javascript Icon")}
-              {createCircle(circleRefs.tailwind, "/tailwind.svg", "TailwindCSS Icon")}
-            </div>
+    {/* Profile in Center */}
+    <div className="col-span-full flex justify-center my-6">
+      <Circle ref={circleRefs.profile} className="size-16 md:size-20">
+        <Image
+          src="/ashu.jpg"
+          alt="Profile icon"
+          width={60}
+          height={60}
+          className="rounded-full"
+        />
+      </Circle>
+    </div>
 
-            {/* Center profile */}
-            <Circle ref={circleRefs.profile} className="size-16 md:size-20">
-              <Image
-                src="/ashu.jpg"
-                alt="Profile icon"
-                width={48}
-                height={48}
-                className="rounded-full"
-              />
-            </Circle>
+    {/* Bottom Row - 10 icons */}
+    {createCircle(circleRefs.api, "/api.svg", "API Icon")}
+    {createCircle(circleRefs.awsec2, "/ec2.svg", "AWS EC2 Icon")}
+    {createCircle(circleRefs.awsrds, "/RDS.svg", "AWS RDS Icon")}
+    {createCircle(circleRefs.awss3, "/s3.svg", "AWS S3 Icon")}
+    {createCircle(circleRefs.vercel, "/vercel.svg", "Vercel Icon")}
+    {createCircle(circleRefs.gemini, "/gemini.svg", "Gemini Icon")}
+    {createCircle(circleRefs.github, "/github.svg", "Github Icon")}
+    {createCircle(circleRefs.vs, "/vs.svg", "VS Code Icon")}
+    {createCircle(circleRefs.figma, "/figma.svg", "Figma Icon")}
+    {createCircle(circleRefs.jira, "/jira.svg", "Jira Icon")}
+    {createCircle(circleRefs.awsamplify, "/amplify.svg", "Amplify Icon")}
+  </div>
+</div>
 
-            {/* Fourth Row - 3 icons */}
-            <div className="flex flex-row justify-center gap-12">
-              {createCircle(circleRefs.nodejs, "/node.svg", "NodeJS Icon")}
-              {createCircle(circleRefs.mongodb, "/mongodb.svg", "MongoDB Icon")}
-              {createCircle(circleRefs.sql, "/sql.svg", "SQL Icon")}
-            </div>
 
-            {/* Bottom Row - 2 icons */}
-            <div className="flex flex-row justify-center gap-16">
-              {createCircle(circleRefs.github, "/github.svg", "Github Icon")}
-              {createCircle(circleRefs.vs, "/vs.svg", "VS Code Icon")}
-            </div>
-
-            {/* Add Gemini to mobile layout */}
-            <div className="flex flex-row justify-center gap-16">
-              {createCircle(circleRefs.gemini, "/gemini.svg", "Gemini Icon")}
-            </div>
-          </div>
-        ) : (
-          /* Desktop Layout - Horizontal layout with all icons */
-          <div className="flex flex-row items-center justify-between w-full">
-            {/* Far Left Group (4 icons) */}
-            <div className="flex flex-col gap-4">
-              {createCircle(circleRefs.nextjs, "/nextjs.svg", "NextJS Icon")}
-              {createCircle(circleRefs.typescript, "/ts.svg", "TypeScript Icon")}
-              {createCircle(circleRefs.tailwind, "/tailwind.svg", "TailwindCSS Icon")}
-              {createCircle(circleRefs.mongodb, "/mongodb.svg", "MongoDB Icon")}
-            </div>
-
-            {/* Left of Profile (3 icons) */}
-            <div className="flex flex-col gap-4">
-              {createCircle(circleRefs.nodejs, "/node.svg", "NodeJS Icon")}
-              {createCircle(circleRefs.sql, "/sql.svg", "SQL Icon")}
-              {createCircle(circleRefs.jira, "/jira.svg", "Jira Icon")}
-            </div>
-
-            {/* Center profile */}
-            <Circle ref={circleRefs.profile} className="size-16 md:size-20">
-              <Image
-                src="/ashu.jpg"
-                alt="Profile icon"
-                width={60}
-                height={60}
-                className="rounded-full"
-              />
-            </Circle>
-
-            {/* Right of Profile (3 icons) */}
-            <div className="flex flex-col gap-4">
-              {createCircle(circleRefs.javascript, "/js.svg", "Javascript Icon")}
-              {createCircle(circleRefs.redis, "/redis.svg", "Redis Icon")}
-              {createCircle(circleRefs.api, "/api.svg", "API Icon")}
-            </div>
-
-            {/* Far Right (4 icons) */}
-            <div className="flex flex-col gap-4">
-              {createCircle(circleRefs.react, "/react.svg", "React Icon")}
-              {createCircle(circleRefs.gemini, "/gemini.svg", "Gemini Icon")}
-              {createCircle(circleRefs.github, "/github.svg", "Github Icon")}
-              {createCircle(circleRefs.vs, "/vs.svg", "VS Code Icon")}
-            </div>
-          </div>
-        )}
-      </div>
 
       {/* Render beams only after the component is mounted and refs are set */}
-      {mounted && (
-        <>
-          {/* Connect Left Side Icons - For Both Mobile & Desktop */}
-          {createBeam(circleRefs.nextjs, isMobile ? 10 : 50, 0)}
-          {createBeam(circleRefs.typescript, isMobile ? 5 : 20, 5)}
-          {createBeam(circleRefs.tailwind, isMobile ? 0 : 5, 10)}
-          {createBeam(circleRefs.mongodb, isMobile ? -5 : -35, 15)}
-          {createBeam(circleRefs.nodejs, isMobile ? -10 : -15, 0)}
-          {createBeam(circleRefs.sql, isMobile ? -5 : 5, 5)}
-          {createBeam(circleRefs.jira, isMobile ? 0 : -15, 10)}
+{mounted && (
+  <>
+    {/* Top row connections - all curve down */}
+    {createBeam(circleRefs.nextjs, isMobile ? 10 : 20, 5)}
+    {createBeam(circleRefs.typescript, isMobile ? 8 : 18, 5)}
+    {createBeam(circleRefs.react, isMobile ? 10 : 20, 0)}
+    {createBeam(circleRefs.javascript, isMobile ? 8 : 18, 5)}
+    {createBeam(circleRefs.tailwind, isMobile ? 6 : 15, 8)}
+       {createBeam(circleRefs.aws, isMobile ? 10 : 20, 6)}
+    {createBeam(circleRefs.nodejs, isMobile ? 6 : 15, 8)}
+    {createBeam(circleRefs.express, isMobile ? 8 : 18, 5)}
+    {createBeam(circleRefs.mongodb, isMobile ? 8 : 18, 8)}
+    {createBeam(circleRefs.sql, isMobile ? 10 : 20, 8)}
+    {createBeam(circleRefs.redis, isMobile ? 10 : 20, 5)}
 
-          {/* Connect Right Side Icons - For Both Mobile & Desktop */}
-          {createBeam(circleRefs.javascript, isMobile ? 10 : -20, 0, true)}
-          {createBeam(circleRefs.redis, isMobile ? 5 : -20, 5, true)}
-          {createBeam(circleRefs.api, isMobile ? 0 : -10, 10, true)}
-          {createBeam(circleRefs.react, isMobile ? -5 : 50, 0, true)}
+    {/* Bottom row connections - all curve up */}
+    {createBeam(circleRefs.api, isMobile ? 10 : 20, 5, true)}
+    {createBeam(circleRefs.awsec2, isMobile ? 10 : 20, 5, true)}
+    {createBeam(circleRefs.awsrds, isMobile ? 10 : 20, 8, true)}
+    {createBeam(circleRefs.awss3, isMobile ? 10 : 20, 6, true)}
+    {createBeam(circleRefs.vercel, isMobile ? 8 : 18, 5, true)}
+    {createBeam(circleRefs.gemini, isMobile ? 10 : 20, 5, true)}
+    {createBeam(circleRefs.github, isMobile ? 8 : 18, 8, true)}
+    {createBeam(circleRefs.vs, isMobile ? 8 : 18, 6, true)}
+    {createBeam(circleRefs.figma, isMobile ? 8 : 18, 8, true)}
+    {createBeam(circleRefs.jira, isMobile ? 8 : 18, 6, true)}
+    {createBeam(circleRefs.awsamplify, isMobile ? 10 : 20, 5, true)}
+  </>
+)}
 
-          {/* Fix the Gemini beam - Ensure it always renders */}
-          {createBeam(circleRefs.gemini, isMobile ? -10 : 25, 5, true)}
 
-          {createBeam(circleRefs.github, isMobile ? 0 : 15, 10, true)}
-          {createBeam(circleRefs.vs, isMobile ? 5 : -12, 15, true)}
-        </>
-      )}
     </div>
   );
 });

@@ -5,24 +5,24 @@ import { getTasksTextWithHighlightedKeyword } from "./taskAndType";
 export default function LightningTech() {
   const tasks = [
     {
-      text: "Built responsive React components using TypeScript, boosting app performance and engagement by 35%.",
-      keywords: ["TypeScript", "responsive React components", "35%"],
+      text: "Contributed significantly to MarketMind v2, a full-featured ERP platform for the APMC ecosystem, enhancing productivity through cloud integration and real-time analytics.",
+      keywords: ["MarketMind v2", "ERP platform", "real-time analytics", "cloud integration"],
     },
     {
-      text: "Developed interactive data grids with AG Grid, enhancing data visualization and user insights.",
-      keywords: ["data grids", "AG Grid", "data visualization"],
+      text: "Developed real-time analytics dashboards with Chart.js, delivering 30% faster insights through dynamic visualizations.",
+      keywords: ["Chart.js", "real-time analytics dashboards", "30% faster insights"],
     },
     {
-      text: "Created 12 reusable components, reducing development time by 40% and improving maintainability.",
-      keywords: ["12 reusable components", "40%", "improving maintainability"],
+      text: "Implemented virtualized AG Grid tables, reducing high-volume vehicle record data load time by 60%.",
+      keywords: ["AG Grid", "virtualized tables", "60%"],
     },
     {
-      text: "Implemented Redux state management with type-safe slices for efficient data flow and centralized control.",
-      keywords: ["Redux state management", "type-safe slices", "centralized control", "efficient data flow"]
+      text: "Collaborated on and integrated a shared React.js/TypeScript UI component system, improving maintainability and reducing code duplication by 35%.",
+      keywords: ["React.js", "TypeScript", "shared UI component system", "35%"],
     },
     {
-      text: "Developed backend APIs in Node.js, optimizing data transactions and improving system efficiency.",
-      keywords: ["backend APIs", "Node.js", "data transactions", "system efficiency"]
+      text: "Engineered secure and modular Node.js/Express.js backend services, leveraging AWS for reliable cloud-hosted data storage and seamless data exchange.",
+      keywords: ["Node.js", "Express.js", "AWS", "cloud-hosted data storage", "secure backend"],
     },
   ];
 
@@ -35,11 +35,11 @@ export default function LightningTech() {
             <h3 className="text-gray-100 font-semibold text-lg md:text-xl font-Arimo tracking-wide">
               SDE Intern
             </h3>
-            <h4 className="text-AAsecondary font-medium text-sm md:text-base">Lightning Tech</h4>
+            <h4 className="text-AAsecondary font-medium text-sm md:text-base">Lightning Technologies</h4>
           </div>
           {/* Date with badge styling */}
           <span className="font-mono text-xs bg-gray-800 text-gray-300 py-1 px-2 rounded-full">
-            Jan 2025 - Mar 2025
+            Jan 2025 - Apr 2025
           </span>
         </div>
         
@@ -62,7 +62,7 @@ export default function LightningTech() {
         
         <div className="flex flex-wrap gap-2 pt-2">
           {/* Skills tags */}
-          {['React', 'TypeScript', 'Redux', 'Node.js', 'AG Grid'].map((skill) => (
+          {['React.js', 'TypeScript', 'Chart.js', 'AG Grid', 'Node.js', 'Express.js', 'AWS'].map((skill) => (
             <span 
               key={skill} 
               className="text-xs font-mono bg-gray-800 text-gray-300 px-3 py-1 rounded-full hover:bg-AAsecondary/20 hover:text-AAsecondary transition-colors duration-200"
