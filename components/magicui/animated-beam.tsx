@@ -87,7 +87,7 @@ export const AnimatedTooltip = ({
 
           <div
             onMouseMove={handleMouseMove}
-            className="relative !m-0  rounded-full  filter invert object-cover  object-top !p-0 transition duration-500 group-hover:z-30 group-hover:scale-105"
+            className="relative !m-0 h-14 w-14  rounded-full object-cover  object-top !p-0 transition duration-500 group-hover:z-30 group-hover:scale-105"
           >
             {item.icon}
           </div>

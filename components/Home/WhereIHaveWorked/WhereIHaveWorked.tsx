@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "../../../node_modules/framer-motion/dist/framer-motion";
 import ArrowIcon from "../../Icons/ArrowIcon";
 import LightningTech from "./Descriptions/LighningTech";
+import ScribblerTech from "./Descriptions/Scribbler";
 
 export default function WhereIHaveWorked() {
   // Initialize the state with the default company
@@ -11,6 +12,8 @@ export default function WhereIHaveWorked() {
     switch (selectedJob) {  
       case "LightningTech":
         return <LightningTech />;
+      case "Scribbler":
+        return <ScribblerTech/>
       default:
         return null;
     }
@@ -60,7 +63,11 @@ const CompaniesBar = ({ selectedJob, setSelectedJob }) => {
       name: "Lightning Tech",
       period: "Jan 2025 - Mar 2025"
     },
-    // Add more companies here when needed
+   {
+      id: "Scribbler",
+      name: "Scribbler.live",
+      period: "Ongoing"
+   }
   ];
 
   // Calculate indicator position based on selected job
