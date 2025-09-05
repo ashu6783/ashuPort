@@ -62,11 +62,7 @@ export default function SocialMediaEmail(props: { finishedLoading: boolean }) {
             }}
             className=""
           >
-            <a href="mailto:abdellatif@anaflous.com" target={"_blank"} rel="noreferrer">
-              <span className=" font-Header tracking-wider text-gray-400 hover:text-AAsecondary hover:cursor-pointer">
-                ashu00665<span className="text-AAsecondary">@</span>gmail<span className="text-AAsecondary">.</span>com
-              </span>
-            </a>
+         
           </motion.div>
 
           <div className="h-24 w-0.5 bg-gray-400"></div>

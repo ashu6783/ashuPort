@@ -1,9 +1,10 @@
 import React from "react";
 import { motion } from "../../../node_modules/framer-motion/dist/framer-motion";
+import Image from "next/image";
 export default function Logo(props: { finishedLoading: boolean }) {
   return (
     <>
-      <motion.div
+      {/* <motion.div
         initial={{ y: 0, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{
@@ -26,7 +27,8 @@ export default function Logo(props: { finishedLoading: boolean }) {
         <motion.div animate={{ rotate: -30, y: 27, x: 19 }} className="h-1 w-6 rounded bg-AAsecondary"></motion.div>
         <motion.div animate={{ rotate: 30, x: 19, y: -10 }} className="h-1 w-6 rounded bg-AAsecondary"></motion.div>
         <motion.div animate={{ rotate: 90, x: 28, y: 2 }} className="h-1 w-6 rounded bg-AAsecondary"></motion.div>
-      </motion.div>
+      </motion.div> */}
+      <Image src='/ashu.jpg' alt="logo" height={36} width={36} className="rounded-full"/>
     </>
   );
 }
