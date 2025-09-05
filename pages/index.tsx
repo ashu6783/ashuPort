@@ -40,7 +40,7 @@ export default function Home() {
       setShowContent(true);
       context.sharedState.finishedLoading = true;
       context.setSharedState(context.sharedState);
-    }, 9000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, [context, context.sharedState]);
