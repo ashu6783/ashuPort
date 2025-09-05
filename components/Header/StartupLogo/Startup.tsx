@@ -1,67 +1,38 @@
+"use client";
 import React from "react";
-import {
-  AnimatedSpan,
-  Terminal,
-  TypingAnimation,
-} from "@/components/magicui/startupTerminal";
+import { SparklesCore } from "@/components/magicui/sparkel";
+
 const Startup = () => {
-
-
   return (
- <div className="flex justify-center items-center h-screen">
-    <Terminal>
-      <TypingAnimation>&gt; pnpm dlx shadcn@latest init</TypingAnimation>
+    <div className="h-[50rem] w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md">
+      {/* Name */}
+      <div className="  w-[80%]  max-w-xl bg-white/10 border border-gray-700 rounded-2xl p-4 shadow-lg backdrop-blur-md">
+        <p className="text-gray-400 text-center">Loading portfolio...</p>
+      </div>
 
-      <AnimatedSpan delay={1500} className="text-green-500">
-        <span>✔ Preflight checks.</span>
-      </AnimatedSpan>
+      {/* Sparkles Animation */}
+      <div className="w-[40rem] h-40 relative mt-4">
+        {/* Gradients */}
+        <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
+        <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
+        <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
+        <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
 
-      <AnimatedSpan delay={2000} className="text-green-500">
-        <span>✔ Verifying framework. Found Next.js.</span>
-      </AnimatedSpan>
+        {/* Sparkles Core */}
+        <SparklesCore
+          background="transparent"
+          minSize={0.4}
+          maxSize={1}
+          particleDensity={1200}
+          className="w-full h-full"
+          particleColor="#FFFFFF"
+        />
 
-      <AnimatedSpan delay={2500} className="text-green-500">
-        <span>✔ Validating Tailwind CSS.</span>
-      </AnimatedSpan>
-
-      <AnimatedSpan delay={3000} className="text-green-500">
-        <span>✔ Validating import alias.</span>
-      </AnimatedSpan>
-
-      <AnimatedSpan delay={3500} className="text-green-500">
-        <span>✔ Writing components.json.</span>
-      </AnimatedSpan>
-
-      <AnimatedSpan delay={4000} className="text-green-500">
-        <span>✔ Checking registry.</span>
-      </AnimatedSpan>
-
-      <AnimatedSpan delay={4500} className="text-green-500">
-        <span>✔ Updating tailwind.config.ts</span>
-      </AnimatedSpan>
-
-      <AnimatedSpan delay={5000} className="text-green-500">
-        <span>✔ Updating app/globals.css</span>
-      </AnimatedSpan>
-
-      <AnimatedSpan delay={5500} className="text-green-500">
-        <span>✔ Installing dependencies.</span>
-      </AnimatedSpan>
-
-      <AnimatedSpan delay={6000} className="text-blue-500">
-        <span>ℹ Updated 1 file:</span>
-        <span className="pl-2">- lib/utils.ts</span>
-      </AnimatedSpan>
-
-      <TypingAnimation delay={6500} className="text-muted-foreground">
-        Success! Project initialization completed.
-      </TypingAnimation>
-
-      <TypingAnimation delay={7000} className="text-muted-foreground">
-        Deployement successful! Your app is now live.
-      </TypingAnimation>
-    </Terminal>
+        {/* Gradient Mask */}
+        <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
+      </div>
     </div>
   );
 };
+
 export default Startup;

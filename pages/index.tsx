@@ -17,8 +17,7 @@ import ScreenSizeDetector from "../components/CustomComponents/ScreenSizeDetecto
 export default function Home() {
   const [showStartup, setShowStartup] = useState(true);
   const [showContent, setShowContent] = useState(false);
-  
-  // context Variable to clearInterval
+
   const context = useContext(AppContext);
   const aboutRef = useRef<HTMLDivElement>(null);
   const homeRef = useRef<HTMLDivElement>(null);
@@ -27,32 +26,28 @@ export default function Home() {
 
   useEffect(() => {
     clearInterval(context.sharedState.userdata.timerCookieRef.current);
-    
+
     if (typeof window !== "undefined") {
-      // remove UserDataPuller project EventListeners
       window.removeEventListener("resize", context.sharedState.userdata.windowSizeTracker.current);
       window.removeEventListener("mousemove", context.sharedState.userdata.mousePositionTracker.current, false);
-      
-      // remove Typing project EventListeners
+
       window.removeEventListener("resize", context.sharedState.typing.eventInputLostFocus);
       document.removeEventListener("keydown", context.sharedState.typing.keyboardEvent);
     }
 
-   
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setShowStartup(false);
       setShowContent(true);
       context.sharedState.finishedLoading = true;
       context.setSharedState(context.sharedState);
     }, 9000);
-    
+
+    return () => clearTimeout(timer);
   }, [context, context.sharedState]);
 
   useEffect(() => {
     Aos.init({ duration: 2000, once: true });
   }, []);
-
-  console.log("website is rendering...");
 
   const meta = {
     title: "Ashutosh Gaurav",
@@ -61,42 +56,45 @@ export default function Home() {
     type: "website",
   };
 
-  return (
-    <>
-      <Head>
-        <title>{meta.title}</title>
-        <meta name="robots" content="follow, index" />
-        <meta content={meta.description} name="description" />
-        <meta property="og:type" content={meta.type} />
-        <meta property="og:description" content={meta.description} />
-        <meta property="og:title" content={meta.title} />
-        <meta property="og:image" content={meta.image} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@titofabdo" />
-        <meta name="twitter:title" content={meta.title} />
-        <meta name="twitter:description" content={meta.description} />
-        <meta name="twitter:image" content={meta.image} />
-      </Head>
+ return (
+  <>
+    <Head>
+      <title>{meta.title}</title>
+      <meta name="robots" content="follow, index" />
+      <meta content={meta.description} name="description" />
+      <meta property="og:type" content={meta.type} />
+      <meta property="og:description" content={meta.description} />
+      <meta property="og:title" content={meta.title} />
+      <meta property="og:image" content={meta.image} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@titofabdo" />
+      <meta name="twitter:title" content={meta.title} />
+      <meta name="twitter:description" content={meta.description} />
+      <meta name="twitter:image" content={meta.image} />
+    </Head>
 
-      <div className="relative snap-mandatory min-h-screen bg-AAprimary w-full ">
-        {showStartup && <Startup />}
-        
+    {/* FULLSCREEN STARTUP (overlays everything) */}
+    {showStartup && (
+      <div className="fixed inset-0 z-50 bg-black">
+        <Startup />
+      </div>
+    )}
+
+    {/* Main content (only after startup finishes) */}
+    {showContent && (
+      <div className="relative snap-mandatory min-h-screen bg-AAprimary w-full">
         <Header finishedLoading={context.sharedState.finishedLoading} sectionsRef={homeRef} />
         <MyName finishedLoading={context.sharedState.finishedLoading} />
         <SocialMediaArround finishedLoading={context.sharedState.finishedLoading} />
-        
-        {showContent && (
-          <>
-            <AboutMe ref={aboutRef} />
-            <WhereIHaveWorked />
-            <SomethingIveBuilt />
-            <GetInTouch />
-            <Footer githubUrl={"https://github.com/ashu6783"} hideSocialsInDesktop={true} />
-          </>
-        )}
-        
+        <AboutMe ref={aboutRef} />
+        <WhereIHaveWorked />
+        <SomethingIveBuilt />
+        <GetInTouch />
+        <Footer githubUrl={"https://github.com/ashu6783"} hideSocialsInDesktop={true} />
         {!isProd && <ScreenSizeDetector />}
       </div>
-    </>
-  );
+    )}
+  </>
+);
+
 }

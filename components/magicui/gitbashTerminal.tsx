@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { Terminal } from "lucide-react";
 import { AnimatedSpan } from "@/components/magicui/terminal";
 
-// Git Bash themed terminal component with single command focus and transition effects
 const GitBashTerminal = ({ show = true }) => {
   const [commandHistory, setCommandHistory] = useState([]);
   const [currentPath, setCurrentPath] = useState("~/portfolio");
@@ -16,7 +15,6 @@ const GitBashTerminal = ({ show = true }) => {
   };
 
   useEffect(() => {
-    // Define all commands to be executed sequentially
     const allCommands = [
       { text: "git init", delay: 200 },
       { text: "git remote add origin https://github.com/ashutosh/portfolio.git", delay: 2000 },
