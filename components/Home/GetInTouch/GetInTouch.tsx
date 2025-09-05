@@ -6,7 +6,6 @@ export default function GetInTouch() {
 
   useEffect(() => {
     const userAgent = navigator.userAgent || navigator.vendor;
-    // Check for Android WebView by inspecting the user agent
     if (/android/i.test(userAgent) && /wv/.test(userAgent)) {
       setIsAndroidWebView(true);
     }
@@ -16,7 +15,7 @@ export default function GetInTouch() {
     <div
       id="GetInTouchSection"
       data-aos="fade-up"
-      className="flex flex-col w-full py-20 md:py-28 items-center bg-AAprimary px-4 sm:px-8 md:px-16"
+      className="flex flex-col w-full py-20 md:py-28 items-center  px-4 sm:px-8 md:px-16"
     >
       {/* Section Header */}
       <div className="flex flex-row items-center mb-4">

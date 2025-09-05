@@ -176,7 +176,7 @@ export default function SomethingIveBuilt() {
   return (
     <div
       id="SomethingIveBuiltSection"
-      className="flex flex-col xl:space-y-28 space-y-12 bg-AAprimary w-full 2xl:px-72 lg:px-24 md:px-16 sm:px-16 py-32 px-4"
+      className="flex flex-col xl:space-y-28 space-y-12  w-full 2xl:px-72 lg:px-24 md:px-16 sm:px-16 py-32 px-4"
     >
       {/* Section Header */}
       <div data-aos="fade-up" className="flex flex-row items-center md:px-0">

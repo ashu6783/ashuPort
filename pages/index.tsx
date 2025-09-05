@@ -82,7 +82,7 @@ export default function Home() {
 
     {/* Main content (only after startup finishes) */}
     {showContent && (
-      <div className="relative snap-mandatory min-h-screen bg-AAprimary w-full">
+      <div className="relative snap-mandatory min-h-screen bg-black w-full">
         <Header finishedLoading={context.sharedState.finishedLoading} sectionsRef={homeRef} />
         <MyName finishedLoading={context.sharedState.finishedLoading} />
         <SocialMediaArround finishedLoading={context.sharedState.finishedLoading} />

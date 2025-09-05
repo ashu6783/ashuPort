@@ -19,7 +19,7 @@ export default function WhereIHaveWorked() {
   return (
     <div 
       data-aos="fade-up" 
-      className="flex flex-col items-center justify-center py-24 space-y-12 bg-AAprimary"
+      className="flex flex-col items-center justify-center py-24 space-y-12 "
     >
       {/* Section Title */}
       <section className="flex flex-row items-center">
