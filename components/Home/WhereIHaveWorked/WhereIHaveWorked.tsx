@@ -60,7 +60,7 @@ export default function WhereIHaveWorked() {
 
 const CompaniesBar = ({ selectedJob, setSelectedJob }) => {
   // Companies data
-  const companies = [
+  const companies = React.useMemo(() => [
     {
       id: "AdityaBirla",
       name: "Aditya Birla (TMRW)",
@@ -76,7 +76,7 @@ const CompaniesBar = ({ selectedJob, setSelectedJob }) => {
       name: "Lightning Tech",
       period: "Jan 2025 - April 2025"
     }
-  ];
+  ], []);
 
   const buttonRefs = React.useRef({});
   const [buttonHeight, setButtonHeight] = React.useState(64);
@@ -87,7 +87,7 @@ const CompaniesBar = ({ selectedJob, setSelectedJob }) => {
     if (firstButton) {
       setButtonHeight(firstButton.offsetHeight);
     }
-  }, []);
+  }, [companies]);
 
   // Calculate indicator position and height based on selected job
   const getIndicatorPosition = () => {
@@ -122,7 +122,7 @@ const CompaniesBar = ({ selectedJob, setSelectedJob }) => {
         {companies.map((company) => (
           <button
             key={company.id}
-            ref={(el) => (buttonRefs.current[company.id] = el)}
+            ref={(el) => { buttonRefs.current[company.id] = el; }}
             onClick={() => setSelectedJob(company.id)}
             className={`flex flex-col items-start py-3 px-4 border-l-2 transition-all duration-300 ${
               selectedJob === company.id 
