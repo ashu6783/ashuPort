@@ -45,10 +45,10 @@ export const AnimatedTooltip = ({
   };
 
   return (
-    <>
+    <div className="flex flex-wrap justify-center items-center gap-6 w-full">
       {items.map((item) => (
         <div
-          className="group relative -mr-4 flex items-center justify-center"
+          className="group relative flex items-center justify-center"
           key={item.id}
           onMouseEnter={() => setHoveredIndex(item.id)}
           onMouseLeave={() => setHoveredIndex(null)}
@@ -93,6 +93,6 @@ export const AnimatedTooltip = ({
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };

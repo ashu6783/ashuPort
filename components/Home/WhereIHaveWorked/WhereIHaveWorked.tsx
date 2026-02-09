@@ -2,18 +2,21 @@ import React from "react";
 import { motion } from "../../../node_modules/framer-motion/dist/framer-motion";
 import ArrowIcon from "../../Icons/ArrowIcon";
 import LightningTech from "./Descriptions/LighningTech";
-import ScribblerTech from "./Descriptions/Scribbler";
+import Wiingy from "./Descriptions/Wiingy";
+import AdityaBirla from "./Descriptions/AdityaBirla";
 
 export default function WhereIHaveWorked() {
   // Initialize the state with the default company
-  const [selectedJob, setSelectedJob] = React.useState("LightningTech");
+  const [selectedJob, setSelectedJob] = React.useState("AdityaBirla");
   
   const renderJobDescription = () => {
     switch (selectedJob) {  
+      case "AdityaBirla":
+        return <AdityaBirla />;
+      case "Wiingy":
+        return <Wiingy />;
       case "LightningTech":
         return <LightningTech />;
-      case "Scribbler":
-        return <ScribblerTech/>
       default:
         return null;
     }
@@ -59,21 +62,44 @@ const CompaniesBar = ({ selectedJob, setSelectedJob }) => {
   // Companies data
   const companies = [
     {
+      id: "AdityaBirla",
+      name: "Aditya Birla (TMRW)",
+      period: "Dec 2025 - Present"
+    },
+    {
+      id: "Wiingy",
+      name: "Wiingy",
+      period: "Oct 2025 - Dec 2025"
+    },
+    {
       id: "LightningTech",
       name: "Lightning Tech",
-      period: "Jan 2025 - Mar 2025"
-    },
-   {
-      id: "Scribbler",
-      name: "Scribbler.live",
-      period: "Ongoing"
-   }
+      period: "Jan 2025 - April 2025"
+    }
   ];
 
-  // Calculate indicator position based on selected job
+  const buttonRefs = React.useRef({});
+  const [buttonHeight, setButtonHeight] = React.useState(64);
+
+  React.useEffect(() => {
+    // Measure the actual height of a button
+    const firstButton = buttonRefs.current[companies[0]?.id];
+    if (firstButton) {
+      setButtonHeight(firstButton.offsetHeight);
+    }
+  }, []);
+
+  // Calculate indicator position and height based on selected job
   const getIndicatorPosition = () => {
     const index = companies.findIndex(company => company.id === selectedJob);
-    return index >= 0 ? index * 44 : 0; // 44px is the height of each button
+    return index >= 0 ? index * buttonHeight : 0;
+  };
+
+  // Calculate mobile indicator position in pixels
+  const getMobileIndicatorPosition = () => {
+    const index = companies.findIndex(company => company.id === selectedJob);
+    const segmentWidth = 100 / companies.length;
+    return index >= 0 ? `${segmentWidth * index}%` : "0%";
   };
 
   return (
@@ -83,8 +109,11 @@ const CompaniesBar = ({ selectedJob, setSelectedJob }) => {
         {/* Animated indicator */}
         <div className="hidden md:block absolute left-0 w-1 bg-gray-700 h-full">
           <motion.div
-            animate={{ y: getIndicatorPosition() }}
-            className="absolute w-1 h-11 bg-AAsecondary"
+            animate={{ 
+              y: getIndicatorPosition(),
+              height: buttonHeight
+            }}
+            className="absolute w-1 bg-AAsecondary"
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           ></motion.div>
         </div>
@@ -93,6 +122,7 @@ const CompaniesBar = ({ selectedJob, setSelectedJob }) => {
         {companies.map((company) => (
           <button
             key={company.id}
+            ref={(el) => (buttonRefs.current[company.id] = el)}
             onClick={() => setSelectedJob(company.id)}
             className={`flex flex-col items-start py-3 px-4 border-l-2 transition-all duration-300 ${
               selectedJob === company.id 
@@ -107,12 +137,12 @@ const CompaniesBar = ({ selectedJob, setSelectedJob }) => {
       </div>
       
       {/* Mobile indicator (horizontal) */}
-      <div className="md:hidden h-0.5 w-full bg-gray-700 mt-1">
+      <div className="md:hidden h-0.5 w-full bg-gray-700 mt-1 relative overflow-hidden">
         <motion.div 
           animate={{ 
-            x: selectedJob === "LightningTech" ? 0 : "100%" 
+            x: getMobileIndicatorPosition()
           }}
-          className="h-full w-full bg-AAsecondary"
+          className="h-full bg-AAsecondary absolute left-0"
           style={{ width: `${100 / companies.length}%` }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         ></motion.div>
