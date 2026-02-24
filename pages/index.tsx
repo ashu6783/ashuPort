@@ -1,7 +1,6 @@
 import Header from "../components/Header/Header";
-import Startup from "../components/Header/StartupLogo/Startup";
 import MyName from "../components/Home/MyName/MyName";
-import { useContext, useEffect, useState, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import SocialMediaArround from "../components/Home/SocialMediaArround/SocialMediaArround";
 import { AboutMe } from "@/components/Home/AboutMe/AboutMe";
 import WhereIHaveWorked from "../components/Home/WhereIHaveWorked/WhereIHaveWorked";
@@ -15,9 +14,6 @@ import Head from "next/head";
 import ScreenSizeDetector from "../components/CustomComponents/ScreenSizeDetector";
 
 export default function Home() {
-  const [showStartup, setShowStartup] = useState(true);
-  const [showContent, setShowContent] = useState(false);
-
   const context = useContext(AppContext);
   const aboutRef = useRef<HTMLDivElement>(null);
   const homeRef = useRef<HTMLDivElement>(null);
@@ -35,14 +31,8 @@ export default function Home() {
       document.removeEventListener("keydown", context.sharedState.typing.keyboardEvent);
     }
 
-    const timer = setTimeout(() => {
-      setShowStartup(false);
-      setShowContent(true);
-      context.sharedState.finishedLoading = true;
-      context.setSharedState(context.sharedState);
-    }, 2000);
-
-    return () => clearTimeout(timer);
+    context.sharedState.finishedLoading = true;
+    context.setSharedState(context.sharedState);
   }, [context, context.sharedState]);
 
   useEffect(() => {
@@ -73,27 +63,17 @@ export default function Home() {
       <meta name="twitter:image" content={meta.image} />
     </Head>
 
-    {/* FULLSCREEN STARTUP (overlays everything) */}
-    {showStartup && (
-      <div className="fixed inset-0 z-50 bg-black">
-        <Startup />
-      </div>
-    )}
-
-    {/* Main content (only after startup finishes) */}
-    {showContent && (
-      <div className="relative snap-mandatory min-h-screen bg-black w-full">
-        <Header finishedLoading={context.sharedState.finishedLoading} sectionsRef={homeRef} />
-        <MyName finishedLoading={context.sharedState.finishedLoading} />
-        <SocialMediaArround finishedLoading={context.sharedState.finishedLoading} />
-        <AboutMe ref={aboutRef} />
-        <WhereIHaveWorked />
-        <SomethingIveBuilt />
-        <GetInTouch />
-        <Footer githubUrl={"https://github.com/ashu6783"} hideSocialsInDesktop={true} />
-        {!isProd && <ScreenSizeDetector />}
-      </div>
-    )}
+    <div className="relative snap-mandatory min-h-screen bg-black w-full">
+      <Header finishedLoading={context.sharedState.finishedLoading} sectionsRef={homeRef} />
+      <MyName finishedLoading={context.sharedState.finishedLoading} />
+      <SocialMediaArround finishedLoading={context.sharedState.finishedLoading} />
+      <AboutMe ref={aboutRef} />
+      <WhereIHaveWorked />
+      <SomethingIveBuilt />
+      <GetInTouch />
+      <Footer githubUrl={"https://github.com/ashu6783"} hideSocialsInDesktop={true} />
+      {!isProd && <ScreenSizeDetector />}
+    </div>
   </>
 );
 

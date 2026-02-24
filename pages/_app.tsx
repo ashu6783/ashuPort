@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }) {
       keyboardEvent: null,
       eventInputLostFocus: null,
     },
-    finishedLoading: false,
+    finishedLoading: true,
   });
 
   return (
